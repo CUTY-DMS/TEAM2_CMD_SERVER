@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @ConfigurationPropertiesScan
 @SpringBootApplication
 public class CmdProjectTeam2Application {
-    //test
     public static void main(String[] args) {
         SpringApplication.run(CmdProjectTeam2Application.class, args);
     }
