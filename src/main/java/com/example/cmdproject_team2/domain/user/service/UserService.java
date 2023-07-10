@@ -9,6 +9,9 @@ import com.example.cmdproject_team2.domain.user.controller.dto.response.TokenRes
 import com.example.cmdproject_team2.domain.user.entity.User;
 import com.example.cmdproject_team2.domain.user.entity.UserType;
 import com.example.cmdproject_team2.domain.user.repository.UserRepository;
+import com.example.cmdproject_team2.domain.user.service.exception.user.NotAdminException;
+import com.example.cmdproject_team2.domain.user.service.exception.user.PasswordMismatchException;
+import com.example.cmdproject_team2.domain.user.service.exception.user.UserNotFoundException;
 import com.example.cmdproject_team2.domain.user.service.facade.UserFacade;
 import com.example.cmdproject_team2.global.security.jwt.JwtProperties;
 import com.example.cmdproject_team2.global.security.jwt.JwtTokenProvider;
@@ -39,7 +42,7 @@ public class UserService {
                 .build();
 
         if(!request.getSecretKey().equals(user.getSecretKey())) {
-            throw new IllegalArgumentException("not_admin");
+            throw NotAdminException.EXCEPTION;
         }
 
         userRepository.save(user);
@@ -48,10 +51,10 @@ public class UserService {
     public TokenResponse login(AdminLoginRequest request) {
 
         User user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow();
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
         if(!request.getPassword().equals(user.getPassword())) {
-            throw new IllegalArgumentException("mis_match");
+            throw PasswordMismatchException.EXCEPTION;
         }
 
         return TokenResponse.builder()
