@@ -7,18 +7,18 @@ import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.To
 import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminLoginRequest;
 import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminModifyRequest;
 import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.StudentListResponse;
-import com.example.cmdproject_team2.domain.user.admin.service.UserService;
+import com.example.cmdproject_team2.domain.user.admin.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequiredArgsConstructor
-public class UserController {
+public class AdminController {
 
-    private final UserService userService;
+    private final AdminService userService;
 
-    @PostMapping("/admin/Signup")
+    @PostMapping("/admin/signup")
     public void signup(@RequestBody AdminSignupRequest request) {
         userService.signup(request);
     }

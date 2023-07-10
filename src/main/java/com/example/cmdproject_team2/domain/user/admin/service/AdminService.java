@@ -4,9 +4,9 @@ import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.Adm
 import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminModifyRequest;
 import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminSignupRequest;
 import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.*;
-import com.example.cmdproject_team2.domain.user.admin.entity.User;
-import com.example.cmdproject_team2.domain.user.admin.entity.UserType;
-import com.example.cmdproject_team2.domain.user.admin.repository.UserRepository;
+import com.example.cmdproject_team2.domain.user.admin.entity.Admin;
+import com.example.cmdproject_team2.domain.user.UserType;
+import com.example.cmdproject_team2.domain.user.admin.repository.AdminRepository;
 import com.example.cmdproject_team2.domain.user.admin.service.exception.user.NotAdminException;
 import com.example.cmdproject_team2.domain.user.admin.service.exception.user.PasswordMismatchException;
 import com.example.cmdproject_team2.domain.user.admin.service.exception.user.UserNotFoundException;
@@ -22,9 +22,9 @@ import java.util.List;
 @Transactional
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class AdminService {
 
-    private final UserRepository userRepository;
+    private final AdminRepository userRepository;
 
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -34,7 +34,7 @@ public class UserService {
 
     public void signup(AdminSignupRequest request) {
 
-        User user = User.builder()
+        Admin user = Admin.builder()
                 .userId(request.getUserId())
                 .password(request.getPassword())
                 .build();
@@ -48,7 +48,7 @@ public class UserService {
 
     public TokenResponse login(AdminLoginRequest request) {
 
-        User user = userRepository.findByUsername(request.getUsername())
+        Admin user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
         if(!request.getPassword().equals(user.getPassword())) {
@@ -64,14 +64,14 @@ public class UserService {
 
     public AdminDetailsResponse getAdminDetails(Long userId) {
 
-        User user = userRepository.findById(userId)
+        Admin user = userRepository.findById(userId)
                 .orElseThrow(()->UserNotFoundException.EXCEPTION);
 
         return new AdminDetailsResponse(user);
     }
 
     public StudentListResponse getStudentList() {
-        List<User> user = userRepository.findAllByType(UserType.STUDENT);
+        List<Admin> user = userRepository.findAllByType(UserType.STUDENT);
 
         List<StudentList> studentList = user.stream().map(StudentList::of)
                 .toList();
@@ -81,13 +81,13 @@ public class UserService {
 
     public StudentDetailsResponse getStudentDetails() {
 
-        User currentUser = userFacade.currentUser();
+        Admin currentUser = userFacade.currentUser();
 
         return new StudentDetailsResponse(currentUser);
     }
 
     public void modifyAdminInfo(Long userId, AdminModifyRequest request) {
-        User user = userRepository.findById(userId)
+        Admin user = userRepository.findById(userId)
                 .orElseThrow(()->UserNotFoundException.EXCEPTION);
 
         user.modifyAdminInfo(request.getUsername(), request.getGrader(), request.getSchoolClass());

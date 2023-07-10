@@ -1,15 +1,15 @@
 package com.example.cmdproject_team2.domain.user.admin.repository;
 
-import com.example.cmdproject_team2.domain.user.admin.entity.User;
-import com.example.cmdproject_team2.domain.user.admin.entity.UserType;
+import com.example.cmdproject_team2.domain.user.admin.entity.Admin;
+import com.example.cmdproject_team2.domain.user.UserType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface AdminRepository extends JpaRepository<Admin, Long> {
 
-    Optional<User> findByUsername(String username);
-    List<User> findAllByType(UserType userType);
+    Optional<Admin> findByUsername(String username);
+    List<Admin> findAllByType(UserType userType);
 }

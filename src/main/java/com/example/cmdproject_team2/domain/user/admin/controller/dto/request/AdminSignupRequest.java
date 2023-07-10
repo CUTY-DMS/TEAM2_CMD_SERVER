@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.user.controller.dto.request;
+package com.example.cmdproject_team2.domain.user.admin.controller.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;

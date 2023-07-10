@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.user.admin.entity;
+package com.example.cmdproject_team2.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

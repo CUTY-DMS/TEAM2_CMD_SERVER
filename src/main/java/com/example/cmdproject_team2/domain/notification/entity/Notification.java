@@ -1,6 +1,6 @@
 package com.example.cmdproject_team2.domain.notification.entity;
 
-import com.example.cmdproject_team2.domain.user.entity.User;
+import com.example.cmdproject_team2.domain.user.admin.entity.Admin;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +21,7 @@ public class Notification {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Admin user;
 
     private String title;
 

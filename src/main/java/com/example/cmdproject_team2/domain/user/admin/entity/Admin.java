@@ -1,5 +1,6 @@
 package com.example.cmdproject_team2.domain.user.admin.entity;
 
+import com.example.cmdproject_team2.domain.user.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @AllArgsConstructor
-public class User {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
