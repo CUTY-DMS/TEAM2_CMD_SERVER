@@ -1,13 +1,13 @@
-package com.example.cmdproject_team2.domain.user.controller;
+package com.example.cmdproject_team2.domain.user.admin.controller;
 
-import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminLoginRequest;
-import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminModifyRequest;
-import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminSignupRequest;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.AdminDetailsResponse;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentDetailsResponse;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentListResponse;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.TokenResponse;
-import com.example.cmdproject_team2.domain.user.service.UserService;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminSignupRequest;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.AdminDetailsResponse;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.StudentDetailsResponse;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.TokenResponse;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminLoginRequest;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.request.AdminModifyRequest;
+import com.example.cmdproject_team2.domain.user.admin.controller.dto.response.StudentListResponse;
+import com.example.cmdproject_team2.domain.user.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
