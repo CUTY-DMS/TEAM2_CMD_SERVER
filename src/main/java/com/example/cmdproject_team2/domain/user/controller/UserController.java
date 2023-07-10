@@ -1,16 +1,15 @@
 package com.example.cmdproject_team2.domain.user.controller;
 
 import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminLoginRequest;
+import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminModifyRequest;
 import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminSignupRequest;
+import com.example.cmdproject_team2.domain.user.controller.dto.response.AdminDetailsResponse;
 import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentDetailsResponse;
 import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentListResponse;
 import com.example.cmdproject_team2.domain.user.controller.dto.response.TokenResponse;
 import com.example.cmdproject_team2.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -29,7 +28,12 @@ public class UserController {
         return userService.login(request);
     }
 
-    @GetMapping
+    @GetMapping("/admin/getAdminDetails")
+    public AdminDetailsResponse getAdminDetails(@PathVariable long userId) {
+        return userService.getAdminDetails(userId);
+    }
+
+    @GetMapping("/admin/getStudentDetails")
     public StudentDetailsResponse getStudentDetails() {
         return userService.getStudentDetails();
     }
@@ -37,5 +41,10 @@ public class UserController {
     @GetMapping("/admin/getStudentList")
     public StudentListResponse getStudentList(){
         return userService.getStudentList();
+    }
+
+    @PatchMapping
+    public void modifyAdminInfo(@PathVariable long userId, @RequestBody AdminModifyRequest request){
+        userService.modifyAdminInfo(userId, request);
     }
 }

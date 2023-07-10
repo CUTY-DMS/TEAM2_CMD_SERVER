@@ -1,11 +1,9 @@
 package com.example.cmdproject_team2.domain.user.service;
 
 import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminLoginRequest;
+import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminModifyRequest;
 import com.example.cmdproject_team2.domain.user.controller.dto.request.AdminSignupRequest;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentDetailsResponse;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentList;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.StudentListResponse;
-import com.example.cmdproject_team2.domain.user.controller.dto.response.TokenResponse;
+import com.example.cmdproject_team2.domain.user.controller.dto.response.*;
 import com.example.cmdproject_team2.domain.user.entity.User;
 import com.example.cmdproject_team2.domain.user.entity.UserType;
 import com.example.cmdproject_team2.domain.user.repository.UserRepository;
@@ -64,6 +62,14 @@ public class UserService {
                 .build();
     }
 
+    public AdminDetailsResponse getAdminDetails(Long userId) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
+
+        return new AdminDetailsResponse(user);
+    }
+
     public StudentListResponse getStudentList() {
         List<User> user = userRepository.findAllByType(UserType.STUDENT);
 
@@ -78,6 +84,14 @@ public class UserService {
         User currentUser = userFacade.currentUser();
 
         return new StudentDetailsResponse(currentUser);
+    }
+
+    public void modifyAdminInfo(Long userId, AdminModifyRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
+
+        user.modifyAdminInfo(request.getUsername(), request.getGrader(), request.getSchoolClass());
+        userRepository.save(user);
     }
 
 }

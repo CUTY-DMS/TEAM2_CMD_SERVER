@@ -38,4 +38,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType type;
+
+    public void modifyAdminInfo(String username, Long grader, Long schoolClass) {
+        this.username = username;
+        this.grader = grader;
+        this.schoolClass = schoolClass;
+    }
 }
