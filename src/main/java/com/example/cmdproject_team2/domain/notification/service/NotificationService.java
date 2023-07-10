@@ -1,24 +1,24 @@
 package com.example.cmdproject_team2.domain.notification.service;
 
-import com.example.cmdproject_team2.domain.notification.controller.dto.request.WriteNotificationRequest;
+import com.example.cmdproject_team2.domain.notification.controller.dto.request.NotificationRequest;
 import com.example.cmdproject_team2.domain.notification.controller.dto.response.NotificationDetailsResponse;
+import com.example.cmdproject_team2.domain.notification.controller.dto.response.NotificationList;
+import com.example.cmdproject_team2.domain.notification.controller.dto.response.NotificationListResponse;
 import com.example.cmdproject_team2.domain.notification.entity.Notification;
 import com.example.cmdproject_team2.domain.notification.repository.NotificationRepository;
-import com.example.cmdproject_team2.domain.user.entity.User;
-import com.example.cmdproject_team2.domain.user.service.facade.UserFacade;
+import com.example.cmdproject_team2.domain.notification.service.exception.notification.NotificationNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class NotificationService {
 
     private final NotificationRepository notificationRepository;
 
-    private final UserFacade userFacade;
-
-    public void writeNotification(WriteNotificationRequest request) {
+    public void writeNotification(NotificationRequest request) {
 
         notificationRepository.save(
                 Notification.builder()
@@ -27,15 +27,25 @@ public class NotificationService {
                         .build());
     }
 
-  //  public NotificationDetailsResponse getNotificationDetails(Long notificationId) {
+    public NotificationDetailsResponse getNotificationDetails(NotificationRequest request) {
 
-       // return notificationRepository.fin
-   // }
+        return new NotificationDetailsResponse(request.getTitle(), request.getContent());
+    }
 
-    public void modifyNotification(Long notificationId, WriteNotificationRequest request) {
+    public NotificationListResponse getNotificationList() {
+
+        return NotificationListResponse.builder()
+                .currentNotification(notificationRepository.findAll()
+                        .stream()
+                        .map(NotificationList::of)
+                        .toList())
+                .build();
+    }
+
+    public void modifyNotification(Long notificationId, NotificationRequest request) {
 
         Notification notification = notificationRepository.findById(notificationId)
-                .orElseThrow();
+                .orElseThrow(()-> NotificationNotFoundException.EXCEPTION);
 
         notification.modifyTitleAndContent(request.getTitle(), request.getContent());
         notificationRepository.save(notification);

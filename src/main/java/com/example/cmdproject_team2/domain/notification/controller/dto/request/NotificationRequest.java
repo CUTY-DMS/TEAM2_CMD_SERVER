@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class WriteNotificationRequest {
+public class NotificationRequest {
 
     private String title;
 
