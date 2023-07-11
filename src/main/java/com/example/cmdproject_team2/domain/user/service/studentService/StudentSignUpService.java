@@ -1,10 +1,9 @@
-package com.example.cmdproject_team2.domain.user.service.userService;
+package com.example.cmdproject_team2.domain.user.service.studentService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
 import com.example.cmdproject_team2.domain.user.facade.UserFacade;
-import com.example.cmdproject_team2.domain.user.presentation.dto.request.UserSignUpRequest;
-import com.example.cmdproject_team2.global.exception.user.NotAdminException;
+import com.example.cmdproject_team2.domain.user.presentation.dto.request.StudentSignupRequest;
 import com.example.cmdproject_team2.global.security.jwt.JwtProperties;
 import com.example.cmdproject_team2.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -15,15 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class UserSignUpService {
+public class StudentSignUpService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtProperties jwtProperties;
-    private final JwtTokenProvider jwtTokenProvider;
-    private final UserFacade userFacade;
 
-    public void userSignUp(UserSignUpRequest request) {
+    public void userSignUp(StudentSignupRequest request) {
         User user = User.builder()
                 .userId(request.getUserId())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -31,6 +27,9 @@ public class UserSignUpService {
                 .grader(request.getGrader())
                 .number(request.getNumber())
                 .schoolClass(request.getSchoolClass())
+                .birth(request.getBirth())
+                .club(request.getClub())
+                .major(request.getMajor())
                 .build();
 
         userRepository.save(user);

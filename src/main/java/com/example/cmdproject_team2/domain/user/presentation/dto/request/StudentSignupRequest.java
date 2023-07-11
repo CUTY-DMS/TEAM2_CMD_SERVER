@@ -7,10 +7,11 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserSignUpRequest {
+public class StudentSignupRequest {
 
     @NotNull
     private String userId;
@@ -32,4 +33,10 @@ public class UserSignUpRequest {
     private Long schoolClass;
 
     private Long number;
+
+    private String major;
+
+    private String club;
+
+    private Date birth;
 }

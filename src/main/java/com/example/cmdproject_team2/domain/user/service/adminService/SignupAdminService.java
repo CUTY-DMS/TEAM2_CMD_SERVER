@@ -22,10 +22,6 @@ public class SignupAdminService {
                 .password(request.getPassword())
                 .build();
 
-        if(!request.getSecretKey().equals(user.getSecretKey())) {
-            throw NotAdminException.EXCEPTION;
-        }
-
         userRepository.save(user);
     }
 }

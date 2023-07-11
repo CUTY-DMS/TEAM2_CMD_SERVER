@@ -6,8 +6,8 @@ import com.example.cmdproject_team2.domain.user.presentation.dto.response.Studen
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentListResponse;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.TokenResponse;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
-import com.example.cmdproject_team2.domain.user.service.userService.UserLoginService;
-import com.example.cmdproject_team2.domain.user.service.userService.UserSignUpService;
+import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
+import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +19,8 @@ import javax.validation.Valid;
 public class UserController {
 
     //STUDENT 여기다가 짜
-    private final UserSignUpService userSignUpService;
-    private final UserLoginService userLoginService;
+    private final StudentSignUpService studentSignUpService;
+    private final StudentLoginService studentLoginService;
 
 
 
@@ -34,13 +34,13 @@ public class UserController {
 
     //STUDENT 여기다가 짜
     @PostMapping("/signup")
-    public void signupUser(@RequestBody @Valid UserSignUpRequest request) {
-        userSignUpService.userSignUp(request);
+    public void signupUser(@RequestBody @Valid StudentSignupRequest request) {
+        studentSignUpService.userSignUp(request);
     }
 
     @PostMapping("/login")
-    public TokenResponse userLogin(@RequestBody @Valid UserLoginRequest request) {
-        return userLoginService.loginUser(request);
+    public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
+        return studentLoginService.loginUser(request);
     }
 
 

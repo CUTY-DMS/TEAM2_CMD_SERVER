@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -34,6 +35,12 @@ public class User {
     private Long schoolClass;
 
     private Long number;
+
+    private String major;
+
+    private String club;
+
+    private Date birth;
 
     @Value("${key.secretKey}")
     private String secretKey;

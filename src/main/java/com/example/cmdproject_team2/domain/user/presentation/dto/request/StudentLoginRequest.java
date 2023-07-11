@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor
 @Transactional
-public class UserLoginRequest {
+public class StudentLoginRequest {
 
     @NotNull
     private String userId;
