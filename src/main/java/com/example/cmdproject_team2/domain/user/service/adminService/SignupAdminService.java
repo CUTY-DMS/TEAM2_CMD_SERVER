@@ -15,7 +15,7 @@ public class SignupAdminService {
 
     private final UserRepository userRepository;
 
-    public void signup(AdminSignupRequest request) {
+    public void signupAdmin(AdminSignupRequest request) {
 
         User user = User.builder()
                 .userId(request.getUserId())

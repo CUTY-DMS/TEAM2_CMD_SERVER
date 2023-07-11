@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
 
+    //STUDENT 여기다가 짜
+
+
+
+    //ADMIN
     private final SignupAdminService signupAdminService;
     private final LoginAdminService loginAdminService;
     private final GetAdminDetailsService getAdminDetailsService;
@@ -23,17 +28,22 @@ public class UserController {
     private final GetStudentListService getStudentListService;
     private final ModifyAdminInfoService modifyAdminInfoService;
 
-    @PostMapping("/admin/signup")
-    public void signup(@RequestBody AdminSignupRequest request) {
-        signupAdminService.signup(request);
+    //STUDENT 여기다가 짜
+
+
+
+    //ADMIN
+    @PostMapping("/signup")
+    public void signupAdmin(@RequestBody AdminSignupRequest request) {
+        signupAdminService.signupAdmin(request);
     }
 
-    @PostMapping("/admin/login")
-    public TokenResponse login(@RequestBody AdminLoginRequest request) {
-        return loginAdminService.login(request);
+    @PostMapping("/login")
+    public TokenResponse loginAdmin(@RequestBody AdminLoginRequest request) {
+        return loginAdminService.loginAdmin(request);
     }
 
-    @GetMapping("/admin/getAdminDetails")
+    @GetMapping("/admin/{userId}")
     public AdminDetailsResponse getAdminDetails(@PathVariable long userId) {
         return getAdminDetailsService.getAdminDetails(userId);
     }
@@ -48,7 +58,7 @@ public class UserController {
         return getStudentListService.getStudentList();
     }
 
-    @PatchMapping
+    @PatchMapping("/admin/{userId}")
     public void modifyAdminInfo(@PathVariable long userId, @RequestBody AdminModifyRequest request){
         modifyAdminInfoService.modifyAdminInfo(userId, request);
     }

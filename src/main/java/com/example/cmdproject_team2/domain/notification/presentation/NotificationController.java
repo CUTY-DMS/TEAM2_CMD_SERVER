@@ -3,7 +3,7 @@ package com.example.cmdproject_team2.domain.notification.presentation;
 import com.example.cmdproject_team2.domain.notification.presentation.dto.request.NotificationRequest;
 import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationDetailsResponse;
 import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationListResponse;
-import com.example.cmdproject_team2.domain.notification.service.NotificationService;
+import com.example.cmdproject_team2.domain.notification.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,30 +12,34 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class NotificationController {
 
-    private final NotificationService notificationService;
+    private final WriteNotificationService writeNotificationService;
+    private final GetNotificationDetailsService getNotificationDetailsService;
+    private final GetNotificationListService getNotificationListService;
+    private final ModifyNotificationService modifyNotificationService;
+    private final DeleteNotificationService deleteNotificationService;
 
     @PostMapping
     public void writeNotification(@RequestBody NotificationRequest request) {
-        notificationService.writeNotification(request);
+        writeNotificationService.writeNotification(request);
     }
 
     @GetMapping
     public NotificationDetailsResponse getNotificationDetails(@RequestBody NotificationRequest request) {
-        return notificationService.getNotificationDetails(request);
+        return getNotificationDetailsService.getNotificationDetails(request);
     }
 
     @GetMapping("/list")
     public NotificationListResponse getNotificationList() {
-        return notificationService.getNotificationList();
+        return getNotificationListService.getNotificationList();
     }
 
     @PatchMapping("/{notificationId}")
     public void modifyNotification(@PathVariable long notificationId, @RequestBody NotificationRequest request) {
-        notificationService.modifyNotification(notificationId, request);
+        modifyNotificationService.modifyNotification(notificationId, request);
     }
 
     @DeleteMapping("/{notificationId}")
     public void deleteNotification(@PathVariable long notificationId) {
-        notificationService.deleteNotification(notificationId);
+        deleteNotificationService.deleteNotification(notificationId);
     }
 }

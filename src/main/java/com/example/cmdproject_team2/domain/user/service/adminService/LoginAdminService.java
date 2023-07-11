@@ -23,7 +23,7 @@ public class LoginAdminService {
 
     private final JwtProperties jwtProperties;
 
-    public TokenResponse login(AdminLoginRequest request) {
+    public TokenResponse loginAdmin(AdminLoginRequest request) {
 
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
