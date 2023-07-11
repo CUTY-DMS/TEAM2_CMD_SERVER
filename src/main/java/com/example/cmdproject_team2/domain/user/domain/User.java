@@ -52,5 +52,16 @@ public class User {
         this.grader = grader;
         this.schoolClass = schoolClass;
     }
+
+    public void updateStudentInfo(String username, Long grader, Long schoolClass, Long number, String major,
+                                  String club,Date birth) {
+        this.username = username;
+        this.grader = grader;
+        this.schoolClass = schoolClass;
+        this.number = number;
+        this.major = major;
+        this.club = club;
+        this.birth = birth;
+    }
 }
 

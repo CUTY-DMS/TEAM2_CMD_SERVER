@@ -6,6 +6,7 @@ import com.example.cmdproject_team2.domain.user.service.adminService.*;
 import com.example.cmdproject_team2.domain.user.service.studentService.GetDetailsService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
+import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class UserController {
     private final StudentSignUpService studentSignUpService;
     private final StudentLoginService studentLoginService;
     private final GetDetailsService getDetailsService;
+    private final UpdateStudentInfoService updateStudentInfoService;
 
 
 
@@ -45,6 +47,11 @@ public class UserController {
     @GetMapping("/student/{userId}")
     public DetailsResponse getDetails(@PathVariable long userId) {
         return getDetailsService.getDetails(userId);
+    }
+
+    @PatchMapping("/admin/{userId}")
+    public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){
+        updateStudentInfoService.updateStudentInfo(userId, request);
     }
 
 
