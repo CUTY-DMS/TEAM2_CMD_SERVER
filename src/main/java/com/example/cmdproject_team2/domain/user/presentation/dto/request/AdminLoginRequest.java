@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class LoginRequest {
+public class AdminLoginRequest {
 
     private String userId;
 
