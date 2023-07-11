@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,6 +27,8 @@ public class Notification {
     private String title;
 
     private String content;
+
+    private LocalDateTime expiredAt;
 
     public void modifyTitleAndContent(String title, String content) {
         this.title = title;

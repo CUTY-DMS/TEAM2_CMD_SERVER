@@ -11,6 +11,6 @@ public class GetNotificationDetailsService {
 
     public NotificationDetailsResponse getNotificationDetails(NotificationRequest request) {
 
-        return new NotificationDetailsResponse(request.getTitle(), request.getContent());
+        return new NotificationDetailsResponse(request.getTitle(), request.getContent(), request.getExpiredAt());
     }
 }
