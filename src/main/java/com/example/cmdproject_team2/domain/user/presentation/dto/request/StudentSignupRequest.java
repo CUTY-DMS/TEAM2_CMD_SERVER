@@ -30,13 +30,18 @@ public class StudentSignupRequest {
     @NotNull
     private Long grader;
 
+    @NotNull
     private Long schoolClass;
 
+    @NotNull
     private Long number;
 
+    @NotNull
     private String major;
 
+    @NotNull
     private String club;
 
+    @NotNull
     private Date birth;
 }
