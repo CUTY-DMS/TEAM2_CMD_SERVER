@@ -7,7 +7,6 @@ import com.example.cmdproject_team2.domain.user.presentation.dto.response.AdminD
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentDetailsResponse;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentListResponse;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.TokenResponse;
-import com.example.cmdproject_team2.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
