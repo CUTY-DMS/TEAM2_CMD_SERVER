@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.Date;
+
 @Getter
 @Builder
 @AllArgsConstructor
@@ -18,10 +20,19 @@ public class StudentDetailsResponse {
 
     private Long number;
 
+    private String major;
+
+    private String club;
+
+    private Date birth;
+
     public StudentDetailsResponse(User user){
         username = user.getUsername();
         grader = user.getGrader();
         schoolClass = user.getSchoolClass();
         number = user.getNumber();
+        major = user.getMajor();
+        club = user.getClub();
+        birth = user.getBirth();
     }
 }
