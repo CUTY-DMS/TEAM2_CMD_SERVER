@@ -1,11 +1,9 @@
 package com.example.cmdproject_team2.domain.user.presentation;
 
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.AdminDetailsResponse;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentDetailsResponse;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentListResponse;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.TokenResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
+import com.example.cmdproject_team2.domain.user.service.studentService.GetDetailsService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +19,7 @@ public class UserController {
     //STUDENT 여기다가 짜
     private final StudentSignUpService studentSignUpService;
     private final StudentLoginService studentLoginService;
+    private final GetDetailsService getDetailsService;
 
 
 
@@ -41,6 +40,11 @@ public class UserController {
     @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.loginUser(request);
+    }
+
+    @GetMapping("/student/{userId}")
+    public DetailsResponse getDetails(@PathVariable long userId) {
+        return getDetailsService.getDetails(userId);
     }
 
 
