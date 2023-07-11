@@ -1,7 +1,7 @@
 package com.example.cmdproject_team2.global.security.auth;
 
 import com.example.cmdproject_team2.domain.user.admin.entity.Admin;
-import com.example.cmdproject_team2.domain.user.admin.repository.AdminRepository;
+import com.example.cmdproject_team2.domain.user.domain.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

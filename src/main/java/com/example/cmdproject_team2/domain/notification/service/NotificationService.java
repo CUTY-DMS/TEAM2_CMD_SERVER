@@ -1,12 +1,12 @@
 package com.example.cmdproject_team2.domain.notification.service;
 
-import com.example.cmdproject_team2.domain.notification.controller.dto.request.NotificationRequest;
-import com.example.cmdproject_team2.domain.notification.controller.dto.response.NotificationDetailsResponse;
-import com.example.cmdproject_team2.domain.notification.controller.dto.response.NotificationList;
-import com.example.cmdproject_team2.domain.notification.controller.dto.response.NotificationListResponse;
-import com.example.cmdproject_team2.domain.notification.entity.Notification;
-import com.example.cmdproject_team2.domain.notification.repository.NotificationRepository;
-import com.example.cmdproject_team2.domain.notification.service.exception.notification.NotificationNotFoundException;
+import com.example.cmdproject_team2.domain.notification.presentation.dto.request.NotificationRequest;
+import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationDetailsResponse;
+import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationList;
+import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationListResponse;
+import com.example.cmdproject_team2.domain.notification.domain.Notification;
+import com.example.cmdproject_team2.domain.notification.domain.NotificationRepository;
+import com.example.cmdproject_team2.global.exception.notification.NotificationNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
