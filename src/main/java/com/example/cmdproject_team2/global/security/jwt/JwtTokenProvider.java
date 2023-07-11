@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {
-    private String secretKey = "myprojectsecret";
+    private String secretKey = "myprojeasdfjjasdfhajksdhfjkashdfjkasdhfjhajskasdfmjklasdjfkasjdfklasdjfkashdfajsdfkdfctsecret";
 
     private long tokenValidTime = 30 * 60 * 1000L;
 
@@ -30,15 +31,15 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String userPk) {
-        Claims claims = Jwts.claims().setSubject(userPk);
+    public String createToken(String username) {
+        Claims claims = Jwts.claims().setSubject(username);
 
         Date now = new Date();
         return Jwts.builder()
-                .setClaims(claims)
+                .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + tokenValidTime))
-                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .signWith(SignatureAlgorithm.HS512, secretKey)
                 .compact();
     }
 
@@ -48,11 +49,16 @@ public class JwtTokenProvider {
     }
 
     public String getUserPk(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJwt(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
     public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("Authorization");
+        String token = request.getHeader("Authorization");
+
+        if(StringUtils.hasText(token) && token.startsWith("Bearer ")&& token.length()>8){
+            return token.substring(7);
+        }
+        return null;
     }
 
     public boolean validateToken(String jwtToken) {

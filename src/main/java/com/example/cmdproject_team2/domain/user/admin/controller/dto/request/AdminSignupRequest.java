@@ -11,7 +11,13 @@ public class AdminSignupRequest {
 
     private String userId;
 
+    private String username;
+
     private String password;
+
+    private Long grader;
+
+    private Long schoolClass;
 
     @Value("${key.secretKey}")
     private String secretKey;

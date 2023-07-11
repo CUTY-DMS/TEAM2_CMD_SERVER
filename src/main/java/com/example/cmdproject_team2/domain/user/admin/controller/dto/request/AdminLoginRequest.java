@@ -11,7 +11,5 @@ public class AdminLoginRequest {
 
     private String userId;
 
-    private String username;
-
     private String password;
 }

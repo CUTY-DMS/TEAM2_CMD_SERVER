@@ -16,35 +16,35 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final AdminService userService;
+    private final AdminService adminService;
 
-    @PostMapping("/admin/signup")
+    @PostMapping("/signup")
     public void signup(@RequestBody AdminSignupRequest request) {
-        userService.signup(request);
+        adminService.signup(request);
     }
 
-    @PostMapping("/admin/login")
+    @PostMapping("/login")
     public TokenResponse login(@RequestBody AdminLoginRequest request) {
-        return userService.login(request);
+        return adminService.login(request);
     }
 
-    @GetMapping("/admin/getAdminDetails")
-    public AdminDetailsResponse getAdminDetails(@PathVariable long userId) {
-        return userService.getAdminDetails(userId);
+    @GetMapping("/admin/{userId}")
+    public AdminDetailsResponse getAdminDetails(@PathVariable String userId) {
+        return adminService.getAdminDetails(userId);
     }
 
     @GetMapping("/admin/getStudentDetails")
     public StudentDetailsResponse getStudentDetails() {
-        return userService.getStudentDetails();
+        return adminService.getStudentDetails();
     }
 
     @GetMapping("/admin/getStudentList")
     public StudentListResponse getStudentList(){
-        return userService.getStudentList();
+        return adminService.getStudentList();
     }
 
-    @PatchMapping
+    @PatchMapping("/admin{userId}")
     public void modifyAdminInfo(@PathVariable long userId, @RequestBody AdminModifyRequest request){
-        userService.modifyAdminInfo(userId, request);
+        adminService.modifyAdminInfo(userId, request);
     }
 }

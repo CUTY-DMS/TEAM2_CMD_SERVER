@@ -15,7 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
 
-        Admin user = userRepository.findByUsername(username)
+        Admin user = userRepository.findByUserId(username)
                 .orElseThrow();
 
         return new CustomUserDetails(user.getUsername());

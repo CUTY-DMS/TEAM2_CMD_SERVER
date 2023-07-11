@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class UserFacade {
+public class AdminFacade {
 
-    private final AdminRepository userRepository;
+    private final AdminRepository adminRepository;
 
     public Admin currentUser() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepository.findByUsername(username)
+        return adminRepository.findByUserId(username)
                 .orElseThrow();
     }
 }
