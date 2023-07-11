@@ -20,6 +20,7 @@ public class SignupAdminService {
         User user = User.builder()
                 .userId(request.getUserId())
                 .password(request.getPassword())
+                .type(request.getADMIN())
                 .build();
 
         userRepository.save(user);

@@ -35,6 +35,5 @@ public class StudentLoginService {
                             .plusSeconds(jwtProperties.getAccessExpiration()))
                     .build();
         }
-
     }
 

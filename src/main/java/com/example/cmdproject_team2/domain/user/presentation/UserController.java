@@ -33,12 +33,12 @@ public class UserController {
     private final ModifyAdminInfoService modifyAdminInfoService;
 
     //STUDENT 여기다가 짜
-    @PostMapping("/signup")
+    @PostMapping("/signup/student")
     public void signupUser(@RequestBody @Valid StudentSignupRequest request) {
         studentSignUpService.userSignUp(request);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.loginUser(request);
     }
@@ -46,12 +46,12 @@ public class UserController {
 
 
     //ADMIN
-    @PostMapping("/signup")
+    @PostMapping("/signup/admin")
     public void signupAdmin(@RequestBody AdminSignupRequest request) {
         signupAdminService.signupAdmin(request);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login/admin")
     public TokenResponse loginAdmin(@RequestBody AdminLoginRequest request) {
         return loginAdminService.loginAdmin(request);
     }

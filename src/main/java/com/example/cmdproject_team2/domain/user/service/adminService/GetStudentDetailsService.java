@@ -1,7 +1,6 @@
 package com.example.cmdproject_team2.domain.user.service.adminService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
-import com.example.cmdproject_team2.domain.user.domain.UserRepository;
 import com.example.cmdproject_team2.domain.user.facade.UserFacade;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentDetailsResponse;
 import lombok.RequiredArgsConstructor;
