@@ -6,13 +6,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 key:
   secretKey: ${secretKey}
 jwt:
   header: Authorization
   prefix: Bearer
-  secret: ajsdklfjasdklfjasldkfdasjlasdjfklasdjlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjka
+  secret: ajsdklfjasdklfjasldkfdasjlasdjfklasdjlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
   accessExpiration: 3600
   refreshExpiration: 271000
 

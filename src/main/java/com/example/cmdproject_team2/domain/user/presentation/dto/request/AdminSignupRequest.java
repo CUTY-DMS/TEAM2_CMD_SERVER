@@ -15,6 +15,12 @@ public class AdminSignupRequest {
 
     private String userId;
 
+    private String username;
+
+    private Long grader;
+
+    private Long schoolClass;
+
     private String password;
 
     @Enumerated(EnumType.STRING)
