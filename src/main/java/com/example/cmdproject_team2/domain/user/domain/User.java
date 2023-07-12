@@ -63,5 +63,9 @@ public class User {
         this.club = club;
         this.birth = birth;
     }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
 }
 

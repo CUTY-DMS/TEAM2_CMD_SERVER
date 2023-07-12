@@ -3,10 +3,7 @@ package com.example.cmdproject_team2.domain.user.presentation;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
-import com.example.cmdproject_team2.domain.user.service.studentService.GetDetailsService;
-import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
-import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
-import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
+import com.example.cmdproject_team2.domain.user.service.studentService.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +19,7 @@ public class UserController {
     private final StudentLoginService studentLoginService;
     private final GetDetailsService getDetailsService;
     private final UpdateStudentInfoService updateStudentInfoService;
+    private final UpdatePasswordService updatePasswordService;
 
 
 
@@ -49,9 +47,14 @@ public class UserController {
         return getDetailsService.getDetails(userId);
     }
 
-    @PatchMapping("/admin/{userId}")
+    @PatchMapping("/student/{userId}")
     public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){
         updateStudentInfoService.updateStudentInfo(userId, request);
+    }
+
+    @PatchMapping("/updatePassword")
+    public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
+        updatePasswordService.updatePassword(request);
     }
 
 
