@@ -2,6 +2,7 @@ package com.example.cmdproject_team2.domain.user.facade;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
+import com.example.cmdproject_team2.global.exception.user.UserExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -16,5 +17,11 @@ public class UserFacade {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByUsername(username)
                 .orElseThrow();
+    }
+
+    public void checkUserExist(String userId) {
+        if (userRepository.findByUserId(userId).isPresent()) {
+            throw UserExistsException.EXCEPTION;
+        }
     }
 }

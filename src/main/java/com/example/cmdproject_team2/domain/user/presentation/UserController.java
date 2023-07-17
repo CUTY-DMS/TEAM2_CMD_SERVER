@@ -3,6 +3,7 @@ package com.example.cmdproject_team2.domain.user.presentation;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
+import com.example.cmdproject_team2.domain.user.service.publicService.CheckUserIdService;
 import com.example.cmdproject_team2.domain.user.service.publicService.GetStudentDetailsService;
 import com.example.cmdproject_team2.domain.user.service.publicService.GetStudentListService;
 import com.example.cmdproject_team2.domain.user.service.studentService.*;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
 @RestController
@@ -19,6 +21,7 @@ public class UserController {
     //PUBLIC
     private final GetStudentDetailsService getStudentDetailsService;
     private final GetStudentListService getStudentListService;
+    private final CheckUserIdService checkUserIdService;
 
 
     //STUDENT
@@ -44,6 +47,11 @@ public class UserController {
     @GetMapping("/getStudentList")
     public StudentListResponse getStudentList(){
         return getStudentListService.getStudentList();
+    }
+
+    @RequestMapping(value = "/user-id", method = RequestMethod.HEAD)
+    public void CheckUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
+        checkUserIdService.execute(userId);
     }
 
 
