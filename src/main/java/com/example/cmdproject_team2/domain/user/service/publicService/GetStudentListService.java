@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.user.service.adminService;
+package com.example.cmdproject_team2.domain.user.service.publicService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;

@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.notification.service;
+package com.example.cmdproject_team2.domain.notification.service.publicService;
 
 import com.example.cmdproject_team2.domain.notification.presentation.dto.request.NotificationRequest;
 import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationDetailsResponse;
