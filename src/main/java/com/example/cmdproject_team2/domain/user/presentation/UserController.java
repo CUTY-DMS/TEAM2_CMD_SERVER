@@ -4,7 +4,7 @@ import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
 import com.example.cmdproject_team2.domain.user.service.commonService.CheckPasswordService;
-import com.example.cmdproject_team2.domain.user.service.commonService.CheckUserIdService;
+import com.example.cmdproject_team2.domain.user.service.commonService.DuplicateUserIdService;
 import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentDetailsService;
 import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentListService;
 import com.example.cmdproject_team2.domain.user.service.studentService.*;
@@ -22,7 +22,7 @@ public class UserController {
     //PUBLIC
     private final GetStudentDetailsService getStudentDetailsService;
     private final GetStudentListService getStudentListService;
-    private final CheckUserIdService checkUserIdService;
+    private final DuplicateUserIdService duplicateUserIdService;
     private final CheckPasswordService checkPasswordService;
 
 
@@ -52,8 +52,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user-id", method = RequestMethod.HEAD)
-    public void CheckUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
-        checkUserIdService.execute(userId);
+    public void duplicateUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
+        duplicateUserIdService.execute(userId);
     }
 
     @PostMapping("/checkPassword")

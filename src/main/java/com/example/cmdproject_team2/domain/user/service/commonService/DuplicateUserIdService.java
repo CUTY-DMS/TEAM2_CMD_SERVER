@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class CheckUserIdService {
+public class DuplicateUserIdService {
 
     private final UserFacade userFacade;
 
