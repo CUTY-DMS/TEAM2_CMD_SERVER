@@ -3,6 +3,7 @@ package com.example.cmdproject_team2.domain.user.presentation;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
+import com.example.cmdproject_team2.domain.user.service.commonService.CheckPasswordService;
 import com.example.cmdproject_team2.domain.user.service.commonService.CheckUserIdService;
 import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentDetailsService;
 import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentListService;
@@ -22,6 +23,7 @@ public class UserController {
     private final GetStudentDetailsService getStudentDetailsService;
     private final GetStudentListService getStudentListService;
     private final CheckUserIdService checkUserIdService;
+    private final CheckPasswordService checkPasswordService;
 
 
     //STUDENT
@@ -52,6 +54,11 @@ public class UserController {
     @RequestMapping(value = "/user-id", method = RequestMethod.HEAD)
     public void CheckUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
         checkUserIdService.execute(userId);
+    }
+
+    @PostMapping("/checkPassword")
+    public void checkPassword(@RequestBody @Valid CheckPasswordRequest request) {
+        checkPasswordService.execute(request);
     }
 
 
