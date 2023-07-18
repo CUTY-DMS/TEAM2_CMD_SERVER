@@ -12,11 +12,13 @@ public enum ErrorCode {
     // jwt
     EXPIRED_TOKEN(401 , "Expired token"),
     INVALID_TOKEN(401, "Invalid token"),
+    REFRESH_TOKEN_NOT_FOUND(401,"Refresh token not found"),
 
     //user
     USER_NOT_FOUND(404, "User not found"),
     PASSWORD_MISMATCH(404, "Password mismatch"),
     NOT_ADMIN(404, "Not admin"),
+    USER_EXISTS(404, "User exists"),
 
     //notification
     NOTIFICATION_NOT_FOUND(404, "Notification not found"),
