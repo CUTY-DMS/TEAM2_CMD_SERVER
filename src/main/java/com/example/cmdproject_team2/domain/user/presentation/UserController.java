@@ -64,8 +64,8 @@ public class UserController {
 
     //STUDENT
     @PostMapping("/signup/student")
-    public void signupUser(@RequestBody @Valid StudentSignupRequest request) {
-        studentSignUpService.userSignUp(request);
+    public void userSignup(@RequestBody StudentSignupRequest request) {
+        studentSignUpService.signUp(request);
     }
     @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
