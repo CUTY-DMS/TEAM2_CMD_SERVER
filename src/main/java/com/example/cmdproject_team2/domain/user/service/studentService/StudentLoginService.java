@@ -31,7 +31,7 @@ public class StudentLoginService {
 
 
             return TokenResponse.builder()
-                    .accessToken(jwtTokenProvider.createToken(user.getUsername()))
+                    .accessToken(jwtTokenProvider.createAccessToken(user.getUsername()))
                     .expiredAt(java.time.LocalDateTime.now()
                             .plusSeconds(jwtProperties.getAccessExpiration()))
                     .build();

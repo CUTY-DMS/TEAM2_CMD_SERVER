@@ -12,7 +12,7 @@ key:
 jwt:
   header: Authorization
   prefix: Bearer
-  secret: ajsdklfjasdklfjasldkfdasjlasdjfklasdjlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
+  secret: ajsdklfjasdklfjasldkfdasjlfjefdhasjfdsahjfdhsajkfdsahjkfdlashjfdklsahjfkldashjfkdlahjfkdlahjfkdaslkfasdlhjljlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
   accessExpiration: 3600
   refreshExpiration: 271000
 
