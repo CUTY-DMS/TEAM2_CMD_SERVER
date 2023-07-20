@@ -1,12 +1,12 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.0'
+    id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
 group = 'com.practice'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = "16"
+sourceCompatibility = "17"
 
 configurations {
     compileOnly {
@@ -44,11 +44,12 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    implementation 'org.slf4j:slf4j-api:1.7.35'
 
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
-targetCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_17

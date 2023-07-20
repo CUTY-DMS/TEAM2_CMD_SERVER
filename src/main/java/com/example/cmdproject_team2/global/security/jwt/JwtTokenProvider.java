@@ -27,7 +27,7 @@ import java.util.Date;
 
 @Component
 @RequiredArgsConstructor
-public class JwtTokenProvider implements InitializingBean {
+public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
     private final CustomUserDetailsService customUserDetailsService;
@@ -35,12 +35,6 @@ public class JwtTokenProvider implements InitializingBean {
 
     private Key key;
     private final UserRepository userRepository;
-
-    @Override
-    public void afterPropertiesSet() {
-        byte[] keyBytes = Decoders.BASE64.decode(jwtProperties.getSecret());
-        this.key = Keys.hmacShaKeyFor(keyBytes);
-    }
 
     public TokenResponse createToken(String userId){
         return TokenResponse
