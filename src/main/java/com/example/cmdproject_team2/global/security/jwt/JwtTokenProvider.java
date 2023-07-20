@@ -11,10 +11,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,8 +19,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Key;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Component
 @RequiredArgsConstructor
@@ -32,15 +29,17 @@ public class JwtTokenProvider {
     private final JwtProperties jwtProperties;
     private final CustomUserDetailsService customUserDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
-
-    private Key key;
     private final UserRepository userRepository;
 
     public TokenResponse createToken(String userId){
+        Date now = new Date();
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul")); // 고객의 위치에 맞게 설정
         return TokenResponse
                 .builder()
                 .accessToken(createAccessToken(userId))
                 .refreshToken(createRefreshToken(userId))
+                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
+                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .build();
     }
 
@@ -51,19 +50,18 @@ public class JwtTokenProvider {
                 .claim("type", "access")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiration() * 1000))
-                .signWith(key, SignatureAlgorithm.HS512)
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
     }
-    private String createRefreshToken(String userId) {
+    public String createRefreshToken(String userId) {
 
         Date now = new Date();
 
         String refreshToken = Jwts.builder()
-                .setSubject(userId)
                 .claim("type", "refresh")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getRefreshExpiration() * 1000))
-                .signWith(key, SignatureAlgorithm.HS512)
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
 
         refreshTokenRepository.save(
@@ -81,7 +79,7 @@ public class JwtTokenProvider {
         RefreshToken token = refreshTokenRepository.findByToken(refreshToken)
                 .orElseThrow(()-> InvalidTokenException.EXCEPTION);
 
-        String userId = userRepository.findByUserId(token.getUserId())
+        String userId = userRepository.findByUsername(token.getUserId())
                 .orElseThrow(() -> InvalidTokenException.EXCEPTION).getUserId();
 
         refreshTokenRepository.delete(token);
@@ -102,7 +100,7 @@ public class JwtTokenProvider {
         try {
             return Jwts
                     .parser()
-                    .setSigningKey(key)
+                    .setSigningKey(jwtProperties.getSecret())
                     .parseClaimsJws(token)
                     .getBody();
         } catch (ExpiredJwtException e) {

@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+import java.util.TimeZone;
+
 @Transactional
 @Service
 @RequiredArgsConstructor
@@ -25,6 +28,8 @@ public class LoginAdminService {
 
     public TokenResponse loginAdmin(AdminLoginRequest request) {
 
+        Date now = new Date();
+
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
@@ -33,9 +38,10 @@ public class LoginAdminService {
         }
 
         return TokenResponse.builder()
+                .refreshToken(jwtTokenProvider.createRefreshToken(user.getUsername()))
                 .accessToken(jwtTokenProvider.createAccessToken(user.getUsername()))
-                .expiredAt(java.time.LocalDateTime.now()
-                        .plusSeconds(jwtProperties.getAccessExpiration()))
+                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
+                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .build();
     }
 }

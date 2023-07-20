@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
   redis:
     host: localhost
@@ -17,8 +17,8 @@ jwt:
   header: Authorization
   prefix: Bearer
   secret: lhjljlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
-  accessExpiration: 3600
-  refreshExpiration: 271000
+  accessExpiration: 3600000
+  refreshExpiration: 271000000
 
 server:
   port: 8080
