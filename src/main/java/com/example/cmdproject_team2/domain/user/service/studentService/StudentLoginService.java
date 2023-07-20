@@ -9,32 +9,25 @@ import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
 import com.example.cmdproject_team2.global.security.jwt.JwtProperties;
 import com.example.cmdproject_team2.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
 @RequiredArgsConstructor
 @Service
 public class StudentLoginService {
 
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
-    private final JwtProperties jwtProperties;
+    private final PasswordEncoder passwordEncoder;
 
+    @Transactional
     public TokenResponse loginUser(StudentLoginRequest request) {
-        User user = userRepository.findByUserId(request.getUserId())
+        userRepository.findByUserId(request.getUserId())
+                .filter(user -> passwordEncoder.matches(request.getPassword(), user.getPassword()))
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-        if (!request.getPassword().equals(user.getPassword())) {
-            throw PasswordMismatchException.EXCEPTION;
-        }
-
-
-            return TokenResponse.builder()
-                    .accessToken(jwtTokenProvider.createAccessToken(user.getUsername()))
-                    .expiredAt(java.time.LocalDateTime.now()
-                            .plusSeconds(jwtProperties.getAccessExpiration()))
-                    .build();
-        }
+        return jwtTokenProvider.createToken(request.getUserId());
     }
+}
 
