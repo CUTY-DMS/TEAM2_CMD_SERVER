@@ -3,10 +3,7 @@ package com.example.cmdproject_team2.domain.user.presentation;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
-import com.example.cmdproject_team2.domain.user.service.commonService.CheckPasswordService;
-import com.example.cmdproject_team2.domain.user.service.commonService.DuplicateUserIdService;
-import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentDetailsService;
-import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentListService;
+import com.example.cmdproject_team2.domain.user.service.commonService.*;
 import com.example.cmdproject_team2.domain.user.service.studentService.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +21,7 @@ public class UserController {
     private final GetStudentListService getStudentListService;
     private final DuplicateUserIdService duplicateUserIdService;
     private final CheckPasswordService checkPasswordService;
+    private final FindUserIdService findUserIdService;
 
 
     //STUDENT
@@ -59,6 +57,11 @@ public class UserController {
     @PostMapping("/checkPassword")
     public void checkPassword(@RequestBody @Valid CheckPasswordRequest request) {
         checkPasswordService.execute(request);
+    }
+
+    @GetMapping("/users/{userEmail}")
+    public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
+        return findUserIdService.findUserId(userEmail);
     }
 
 
