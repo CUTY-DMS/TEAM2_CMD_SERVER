@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Getter
@@ -17,6 +18,7 @@ public class StudentSignupRequest {
     private String userId;
 
     @NotNull
+    @Pattern(regexp="(?=.*\\d)(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}", message = "비밀번호는 특수기호 숫가 포함 8-20자여야 합니다")
     private String password;
 
     @NotNull
@@ -35,13 +37,4 @@ public class StudentSignupRequest {
 
     @NotNull
     private Long number;
-
-    @NotNull
-    private String major;
-
-    @NotNull
-    private String club;
-
-    @NotNull
-    private Date birth;
 }
