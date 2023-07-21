@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -35,12 +34,6 @@ public class User {
 
     private Long number;
 
-    private String major;
-
-    private String club;
-
-    private Date birth;
-
     @Value("${key.secretKey}")
     private String secretKey;
 
@@ -53,15 +46,12 @@ public class User {
         this.schoolClass = schoolClass;
     }
 
-    public void updateStudentInfo(String username, Long grader, Long schoolClass, Long number, String major,String club,
-                                  Date birth) {
+    public void updateStudentInfo(String username, Long grader, Long schoolClass, Long number) {
         this.username = username;
         this.grader = grader;
         this.schoolClass = schoolClass;
         this.number = number;
-        this.major = major;
-        this.club = club;
-        this.birth = birth;
+
     }
 
     public void updatePassword(String password) {

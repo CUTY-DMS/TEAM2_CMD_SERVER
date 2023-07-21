@@ -31,8 +31,5 @@ public class StudentDetailsResponse {
         grader = user.getGrader();
         schoolClass = user.getSchoolClass();
         number = user.getNumber();
-        major = user.getMajor();
-        club = user.getClub();
-        birth = user.getBirth();
-    }
+   }
 }

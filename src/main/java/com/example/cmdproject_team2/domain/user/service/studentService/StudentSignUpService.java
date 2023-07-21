@@ -3,8 +3,6 @@ package com.example.cmdproject_team2.domain.user.service.studentService;
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.StudentSignupRequest;
-import com.example.cmdproject_team2.domain.user.presentation.dto.request.StudentUpdateRequest;
-import com.example.cmdproject_team2.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,9 +27,6 @@ public class StudentSignUpService {
                 .grader(request.getGrader())
                 .number(request.getNumber())
                 .schoolClass(request.getSchoolClass())
-                .birth(request.getBirth())
-                .club(request.getClub())
-                .major(request.getMajor())
                 .build();
 
         userRepository.save(user);
