@@ -19,10 +19,12 @@ public class SignupAdminService {
 
         User user = User.builder()
                 .userId(request.getUserId())
+                .password(request.getPassword())
                 .username(request.getUsername())
+                .userEmail(request.getUser_email())
                 .grader(request.getGrader())
                 .schoolClass(request.getSchoolClass())
-                .password(request.getPassword())
+                .number(request.getNumber())
                 .type(request.getADMIN())
                 .secretKey(request.getSecretKey())
                 .build();
