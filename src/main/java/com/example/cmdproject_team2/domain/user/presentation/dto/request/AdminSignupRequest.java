@@ -1,6 +1,7 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.request;
 
 import com.example.cmdproject_team2.domain.user.enums.MajorType;
+import com.example.cmdproject_team2.domain.user.enums.SubjectType;
 import com.example.cmdproject_team2.domain.user.enums.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -40,7 +41,7 @@ public class AdminSignupRequest {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private MajorType majorType;
+    private SubjectType subjectType;
 
     @NotNull
     @Enumerated(EnumType.STRING)

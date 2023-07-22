@@ -26,7 +26,7 @@ public class SignupAdminService {
                 .grader(request.getGrader())
                 .schoolClass(request.getSchoolClass())
                 .number(request.getNumber())
-                .majorType(request.getMajorType())
+                .subjectType(request.getSubjectType())
                 .type(UserType.ADMIN)
                 .secretKey(request.getSecretKey())
                 .build();

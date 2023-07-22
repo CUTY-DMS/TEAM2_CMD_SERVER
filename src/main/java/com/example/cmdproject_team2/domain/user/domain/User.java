@@ -1,6 +1,7 @@
 package com.example.cmdproject_team2.domain.user.domain;
 
 import com.example.cmdproject_team2.domain.user.enums.MajorType;
+import com.example.cmdproject_team2.domain.user.enums.SubjectType;
 import com.example.cmdproject_team2.domain.user.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,11 +39,14 @@ public class User {
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
 
-    @Value("${key.secretKey}")
-    private String secretKey;
+    @Enumerated(EnumType.STRING)
+    private SubjectType subjectType;
 
     @Enumerated(EnumType.STRING)
     private UserType type;
+
+    @Value("${key.secretKey}")
+    private String secretKey;
 
     public void modifyAdminInfo(String username, Long grader, Long schoolClass) {
         this.username = username;
