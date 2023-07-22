@@ -1,9 +1,10 @@
 package com.example.cmdproject_team2.domain.user.enums;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum UserType {
 
     USER("학생"),

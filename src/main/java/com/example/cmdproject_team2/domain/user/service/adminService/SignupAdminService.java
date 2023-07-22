@@ -2,6 +2,7 @@ package com.example.cmdproject_team2.domain.user.service.adminService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
+import com.example.cmdproject_team2.domain.user.enums.UserType;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.AdminSignupRequest;
 import com.example.cmdproject_team2.global.exception.user.NotAdminException;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,8 @@ public class SignupAdminService {
                 .grader(request.getGrader())
                 .schoolClass(request.getSchoolClass())
                 .number(request.getNumber())
-                .type(request.getADMIN())
+                .majorType(request.getMajorType())
+                .userType(UserType.ADMIN)
                 .secretKey(request.getSecretKey())
                 .build();
 

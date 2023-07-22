@@ -1,5 +1,6 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.request;
 
+import com.example.cmdproject_team2.domain.user.enums.MajorType;
 import com.example.cmdproject_team2.domain.user.enums.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -39,7 +40,11 @@ public class AdminSignupRequest {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private UserType ADMIN;
+    private MajorType majorType;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
 
     @NotNull
     @Value("${key.secretKey}")
