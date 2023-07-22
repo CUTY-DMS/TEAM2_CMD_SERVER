@@ -18,7 +18,7 @@ public class GetStudentListService {
     private final UserRepository userRepository;
 
     public StudentListResponse getStudentList() {
-        List<User> user = userRepository.findAllByType(UserType.USER);
+        List<User> user = userRepository.findAllByType(UserType.STUDENT);
 
         List<StudentList> studentList = user.stream().map(StudentList::of)
                 .toList();

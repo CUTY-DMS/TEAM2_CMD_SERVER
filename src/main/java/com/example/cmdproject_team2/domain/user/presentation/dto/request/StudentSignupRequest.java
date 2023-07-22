@@ -1,11 +1,15 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.request;
 
+import com.example.cmdproject_team2.domain.user.enums.MajorType;
+import com.example.cmdproject_team2.domain.user.enums.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
@@ -37,4 +41,12 @@ public class StudentSignupRequest {
 
     @NotNull
     private Long number;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private MajorType majorType;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
 }

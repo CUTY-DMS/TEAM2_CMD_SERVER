@@ -2,6 +2,7 @@ package com.example.cmdproject_team2.domain.user.service.studentService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
+import com.example.cmdproject_team2.domain.user.enums.UserType;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.StudentSignupRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +28,8 @@ public class StudentSignUpService {
                 .grader(request.getGrader())
                 .number(request.getNumber())
                 .schoolClass(request.getSchoolClass())
+                .type(UserType.STUDENT)
+                .majorType(request.getMajorType())
                 .build();
 
         userRepository.save(user);

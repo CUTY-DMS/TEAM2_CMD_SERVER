@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum UserType {
 
-    USER("학생"),
+    STUDENT("학생"),
     ADMIN("교사"),
 
     ;
