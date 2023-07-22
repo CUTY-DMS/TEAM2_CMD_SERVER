@@ -35,13 +35,14 @@ public class User {
 
     private Long number;
 
+    @Enumerated(EnumType.STRING)
     private MajorType majorType;
 
     @Value("${key.secretKey}")
     private String secretKey;
 
     @Enumerated(EnumType.STRING)
-    private UserType userType;
+    private UserType type;
 
     public void modifyAdminInfo(String username, Long grader, Long schoolClass) {
         this.username = username;
