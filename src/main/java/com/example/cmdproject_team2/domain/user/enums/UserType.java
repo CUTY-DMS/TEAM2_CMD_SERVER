@@ -8,9 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum UserType {
 
     STUDENT("학생"),
-    ADMIN("교사"),
-
-    ;
+    ADMIN("교사");
 
     private final String name;
 
