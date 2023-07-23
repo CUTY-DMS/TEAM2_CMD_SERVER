@@ -6,6 +6,7 @@ import com.example.cmdproject_team2.domain.user.facade.UserFacade;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.UpdatePasswordRequest;
 import com.example.cmdproject_team2.global.exception.user.PasswordMismatchException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 @Transactional
@@ -13,18 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UpdatePasswordService {
 
-    private final UserRepository userRepository;
     private final UserFacade userFacade;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void updatePassword(UpdatePasswordRequest request) {
         User user = userFacade.currentUser();
 
-        if(user.getPassword().equals(user.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMismatchException.EXCEPTION;
         }
 
-        user.updatePassword(request.getNewPassword());
-        userRepository.save(user);
+        user.updatePassword(passwordEncoder.encode(request.getNewPassword()));
     }
 }
