@@ -28,7 +28,6 @@ public class UserController {
     //STUDENT
     private final StudentSignUpService studentSignUpService;
     private final StudentLoginService studentLoginService;
-    private final GetDetailsService getDetailsService;
     private final UpdateStudentInfoService updateStudentInfoService;
 
 
@@ -78,10 +77,6 @@ public class UserController {
     @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.loginUser(request);
-    }
-    @GetMapping("/student/{userId}")
-    public DetailsResponse getDetails(@PathVariable long userId) {
-        return getDetailsService.getDetails(userId);
     }
     @PatchMapping("/student/{userId}")
     public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){

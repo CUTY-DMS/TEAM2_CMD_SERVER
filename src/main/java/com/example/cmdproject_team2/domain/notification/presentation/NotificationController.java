@@ -43,11 +43,11 @@ public class NotificationController {
     public void writeNotification(@RequestBody NotificationRequest request) {
         writeNotificationService.writeNotification(request);
     }
-    @PatchMapping("admin/notification/{notificationId}")
+    @PatchMapping("/admin/notification/{notificationId}")
     public void modifyNotification(@PathVariable long notificationId, @RequestBody NotificationRequest request) {
         modifyNotificationService.modifyNotification(notificationId, request);
     }
-    @DeleteMapping("admin/notification/{notificationId}")
+    @DeleteMapping("/admin/notification/{notificationId}")
     public void deleteNotification(@PathVariable long notificationId) {
         deleteNotificationService.deleteNotification(notificationId);
     }

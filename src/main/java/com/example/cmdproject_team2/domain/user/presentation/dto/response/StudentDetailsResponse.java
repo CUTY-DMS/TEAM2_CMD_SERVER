@@ -1,10 +1,13 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.response;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
+import com.example.cmdproject_team2.domain.user.enums.MajorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 @Getter
@@ -20,16 +23,14 @@ public class StudentDetailsResponse {
 
     private Long number;
 
-    private String major;
+    @Enumerated(EnumType.STRING)
+    private MajorType majorType;
 
-    private String club;
-
-    private Date birth;
-
-    public StudentDetailsResponse(User user){
+    public StudentDetailsResponse(User user) {
         username = user.getUsername();
         grader = user.getGrader();
         schoolClass = user.getSchoolClass();
         number = user.getNumber();
-   }
+        majorType = user.getMajorType();
+    }
 }
