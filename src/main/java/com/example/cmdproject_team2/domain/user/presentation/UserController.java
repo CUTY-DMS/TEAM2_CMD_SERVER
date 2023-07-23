@@ -22,6 +22,7 @@ public class UserController {
     private final DuplicateUserIdService duplicateUserIdService;
     private final CheckPasswordService checkPasswordService;
     private final FindUserIdService findUserIdService;
+    private final UpdatePasswordService updatePasswordService;
 
 
     //STUDENT
@@ -29,7 +30,7 @@ public class UserController {
     private final StudentLoginService studentLoginService;
     private final GetDetailsService getDetailsService;
     private final UpdateStudentInfoService updateStudentInfoService;
-    private final UpdatePasswordService updatePasswordService;
+
 
 
     //ADMIN
@@ -63,6 +64,10 @@ public class UserController {
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
         return findUserIdService.findUserId(userEmail);
     }
+    @PatchMapping("/updatePassword")
+    public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
+        updatePasswordService.updatePassword(request);
+    }
 
 
     //STUDENT
@@ -81,10 +86,6 @@ public class UserController {
     @PatchMapping("/student/{userId}")
     public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){
         updateStudentInfoService.updateStudentInfo(userId, request);
-    }
-    @PatchMapping("/updatePassword")
-    public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
-        updatePasswordService.updatePassword(request);
     }
 
 
