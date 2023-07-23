@@ -6,6 +6,7 @@ import com.example.cmdproject_team2.domain.user.enums.UserType;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.AdminSignupRequest;
 import com.example.cmdproject_team2.global.exception.user.NotAdminException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,17 +16,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class SignupAdminService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void signupAdmin(AdminSignupRequest request) {
+        String password = passwordEncoder.encode(request.getPassword());
 
         User user = User.builder()
                 .userId(request.getUserId())
-                .password(request.getPassword())
+                .password(password)
                 .username(request.getUsername())
                 .userEmail(request.getUser_email())
                 .grader(request.getGrader())
                 .schoolClass(request.getSchoolClass())
-                .number(request.getNumber())
                 .subjectType(request.getSubjectType())
                 .type(UserType.ADMIN)
                 .secretKey(request.getSecretKey())

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -35,9 +36,6 @@ public class AdminSignupRequest {
 
     @NotNull
     private Long schoolClass;
-
-    @NotNull
-    private Long number;
 
     @NotNull
     @Enumerated(EnumType.STRING)
