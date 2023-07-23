@@ -1,16 +1,24 @@
 package com.example.cmdproject_team2.domain.notification.service.publicService;
 
-import com.example.cmdproject_team2.domain.notification.presentation.dto.request.NotificationRequest;
-import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationDetailsResponse;
+import com.example.cmdproject_team2.domain.notification.domain.Notification;
+import com.example.cmdproject_team2.domain.notification.domain.NotificationRepository;
+import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Service
+@RequiredArgsConstructor
 public class GetNotificationDetailsService {
 
-    public NotificationDetailsResponse getNotificationDetails(NotificationRequest request) {
+    private final NotificationRepository notificationRepository;
 
-        return new NotificationDetailsResponse(request.getTitle(), request.getContent(), request.getExpiredAt());
+    public NotificationResponse getNotificationDetails(Long notificationId) {
+
+        Notification notification = notificationRepository.findById(notificationId)
+                .orElseThrow();
+
+        return new NotificationResponse(notification);
     }
 }

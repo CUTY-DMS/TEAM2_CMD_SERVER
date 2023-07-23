@@ -1,11 +1,13 @@
 package com.example.cmdproject_team2.domain.notification.service.publicService;
 
 import com.example.cmdproject_team2.domain.notification.domain.NotificationRepository;
-import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationList;
-import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationListResponse;
+import com.example.cmdproject_team2.domain.notification.presentation.dto.response.NotificationResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -14,13 +16,11 @@ public class GetNotificationListService {
 
     private final NotificationRepository notificationRepository;
 
-    public NotificationListResponse getNotificationList() {
+    public List<NotificationResponse> getNotificationList() {
 
-        return NotificationListResponse.builder()
-                .currentNotification(notificationRepository.findAll()
-                        .stream()
-                        .map(NotificationList::of)
-                        .toList())
-                .build();
+        return notificationRepository.findAll()
+                .stream()
+                .map(NotificationResponse::new)
+                .collect(Collectors.toList());
     }
 }
