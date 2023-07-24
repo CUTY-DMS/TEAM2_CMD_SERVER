@@ -23,6 +23,7 @@ public class UserController {
     private final CheckPasswordService checkPasswordService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
+    private final LogoutService logoutService;
 
 
     //STUDENT
@@ -66,6 +67,11 @@ public class UserController {
     @PatchMapping("/updatePassword")
     public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
         updatePasswordService.updatePassword(request);
+    }
+
+    @DeleteMapping("/logout")
+    public void logout() {
+        logoutService.logout();
     }
 
 
