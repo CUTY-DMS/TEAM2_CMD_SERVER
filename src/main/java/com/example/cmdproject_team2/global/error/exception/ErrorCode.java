@@ -12,7 +12,6 @@ public enum ErrorCode {
     // jwt
     EXPIRED_TOKEN(401 , "Expired token"),
     INVALID_TOKEN(401, "Invalid token"),
-    REFRESH_TOKEN_NOT_FOUND(401,"Refresh token not found"),
 
     //user
     USER_NOT_FOUND(404, "User not found"),
@@ -20,6 +19,8 @@ public enum ErrorCode {
     NOT_ADMIN(404, "Not admin"),
     USER_EXISTS(404, "User exists"),
     EMAIL_MATCHED(404,"email matched"),
+    REFRESH_TOKEN_NOT_FOUND(404,"RefreshToken not found"),
+
 
     //notification
     NOTIFICATION_NOT_FOUND(404, "Notification not found"),
