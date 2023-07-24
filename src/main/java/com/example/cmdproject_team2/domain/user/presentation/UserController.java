@@ -50,7 +50,7 @@ public class UserController {
         return getStudentListService.getStudentList();
     }
 
-    @RequestMapping(value = "/user-id", method = RequestMethod.HEAD)
+    @RequestMapping(value = "/userId", method = RequestMethod.HEAD)
     public void duplicateUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
         duplicateUserIdService.execute(userId);
     }
