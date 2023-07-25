@@ -86,7 +86,7 @@ public class UserController {
     }
     @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
-        return studentLoginService.loginUser(request);
+        return studentLoginService.login(request);
     }
     @PatchMapping("/student/{userId}")
     public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){
