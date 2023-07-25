@@ -1,5 +1,6 @@
 package com.example.cmdproject_team2.domain.user.presentation;
 
+import com.example.cmdproject_team2.domain.auth.service.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
@@ -60,10 +61,11 @@ public class UserController {
         checkPasswordService.execute(request);
     }
 
-    @GetMapping("/users/{userEmail}")
+    @GetMapping("/findUserId")
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
         return findUserIdService.findUserId(userEmail);
     }
+
     @PatchMapping("/updatePassword")
     public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
         updatePasswordService.updatePassword(request);
