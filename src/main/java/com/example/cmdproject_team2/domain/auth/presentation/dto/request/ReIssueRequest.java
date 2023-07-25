@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.auth.presentation.dto;
+package com.example.cmdproject_team2.domain.auth.presentation.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;

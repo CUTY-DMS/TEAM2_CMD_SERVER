@@ -1,8 +1,8 @@
 package com.example.cmdproject_team2.domain.auth.presentation;
 
-import com.example.cmdproject_team2.domain.auth.presentation.dto.ReIssueRequest;
+import com.example.cmdproject_team2.domain.auth.presentation.dto.request.ReIssueRequest;
 import com.example.cmdproject_team2.domain.auth.service.TokenReissueService;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.TokenResponse;
+import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
