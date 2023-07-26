@@ -19,7 +19,7 @@ public enum ErrorCode {
     USER_EXISTS(403, "User exists"),
     USER_NOT_FOUND(404, "User not found"),
     PASSWORD_MISMATCH(404, "Password mismatch"),
-    NOT_ADMIN(404, "Not admin"),
+    NOT_ADMIN(403, "Not admin"),
     EMAIL_MATCHED(409,"email matched"),
 
     //notification
