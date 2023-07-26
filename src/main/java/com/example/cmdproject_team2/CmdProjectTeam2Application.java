@@ -12,7 +12,7 @@ import java.util.TimeZone;
 @ConfigurationPropertiesScan
 @SpringBootApplication
 public class CmdProjectTeam2Application {
-
+//test
     @PostConstruct
     public void started(){
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
