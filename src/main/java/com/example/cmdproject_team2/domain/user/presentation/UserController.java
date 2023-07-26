@@ -22,8 +22,6 @@ public class UserController {
     //PUBLIC
     private final GetStudentDetailsService getStudentDetailsService;
     private final GetStudentListService getStudentListService;
-    private final DuplicateUserIdService duplicateUserIdService;
-    private final CheckPasswordService checkPasswordService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
     private final LogoutService logoutService;
@@ -53,16 +51,6 @@ public class UserController {
         return getStudentListService.getStudentList();
     }
 
-    @RequestMapping(value = "/userId", method = RequestMethod.HEAD)
-    public void duplicateUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
-        duplicateUserIdService.execute(userId);
-    }
-
-    @PostMapping("/checkPassword")
-    public void checkPassword(@RequestBody @Valid CheckPasswordRequest request) {
-        checkPasswordService.execute(request);
-    }
-
     @GetMapping("/findUserId")
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
         return findUserIdService.findUserId(userEmail);
@@ -71,11 +59,6 @@ public class UserController {
     @PatchMapping("/updatePassword")
     public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
         updatePasswordService.updatePassword(request);
-    }
-
-    @DeleteMapping("/logout")
-    public void logout() {
-        logoutService.logout();
     }
 
 
