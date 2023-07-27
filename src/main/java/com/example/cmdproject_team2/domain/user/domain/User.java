@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -36,6 +37,10 @@ public class User {
 
     private Long number;
 
+    private String club;
+
+    private Date birth;
+
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
 
@@ -54,11 +59,13 @@ public class User {
         this.schoolClass = schoolClass;
     }
 
-    public void updateStudentInfo(String username, Long grader, Long schoolClass, Long number) {
+    public void updateStudentInfo(String username, Long grader, Long schoolClass, Long number, String club, Date birth) {
         this.username = username;
         this.grader = grader;
         this.schoolClass = schoolClass;
         this.number = number;
+        this.club = club;
+        this.birth = birth;
 
     }
 
