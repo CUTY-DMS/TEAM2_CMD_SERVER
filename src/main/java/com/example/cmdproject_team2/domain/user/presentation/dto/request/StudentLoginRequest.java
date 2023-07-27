@@ -15,6 +15,9 @@ public class StudentLoginRequest {
     private String userId;
 
     @NotNull
+    private String username;
+
+    @NotNull
     private String password;
 
 }
