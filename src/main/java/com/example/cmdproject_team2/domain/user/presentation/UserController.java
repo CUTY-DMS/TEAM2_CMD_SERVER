@@ -41,6 +41,10 @@ public class UserController {
 
 
     //PUBLIC
+    @PostMapping("/checkPassword")
+    public void checkPassword(@RequestBody @Valid CheckPasswordRequest request) {
+        checkPasswordService.execute(request);
+    }
     @GetMapping("/getStudentDetails")
     public StudentDetailsResponse getStudentDetails() {
         return getStudentDetailsService.getStudentDetails();
@@ -49,26 +53,18 @@ public class UserController {
     public StudentListResponse getStudentList(){
         return getStudentListService.getStudentList();
     }
-
-    @RequestMapping(value = "/userId", method = RequestMethod.HEAD)
-    public void duplicateUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
-        duplicateUserIdService.execute(userId);
-    }
-
-    @PostMapping("/checkPassword")
-    public void checkPassword(@RequestBody @Valid CheckPasswordRequest request) {
-        checkPasswordService.execute(request);
-    }
-
     @GetMapping("/users/{userEmail}")
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
         return findUserIdService.findUserId(userEmail);
+    }
+    @RequestMapping(value = "/userId", method = RequestMethod.HEAD)
+    public void duplicateUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
+        duplicateUserIdService.execute(userId);
     }
     @PatchMapping("/updatePassword")
     public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
         updatePasswordService.updatePassword(request);
     }
-
     @DeleteMapping("/logout")
     public void logout() {
         logoutService.logout();
