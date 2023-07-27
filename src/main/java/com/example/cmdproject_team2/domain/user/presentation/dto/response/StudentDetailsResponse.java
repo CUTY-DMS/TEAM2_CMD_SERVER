@@ -26,11 +26,17 @@ public class StudentDetailsResponse {
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
 
+    private String club;
+
+    private Date birth;
+
     public StudentDetailsResponse(User user) {
         username = user.getUsername();
         grader = user.getGrader();
         schoolClass = user.getSchoolClass();
         number = user.getNumber();
         majorType = user.getMajorType();
+        club = user.getClub();
+        birth = user.getBirth();
     }
 }
