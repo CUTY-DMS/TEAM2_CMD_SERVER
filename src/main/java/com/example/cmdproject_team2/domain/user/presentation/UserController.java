@@ -1,9 +1,13 @@
 package com.example.cmdproject_team2.domain.user.presentation;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import com.example.cmdproject_team2.domain.auth.presentation.dto.request.CheckPasswordRequest;
 import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.cmdproject_team2.domain.auth.service.*;
+=======
+import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
+>>>>>>> Stashed changes
 =======
 import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 >>>>>>> Stashed changes
@@ -61,9 +65,12 @@ public class UserController {
         return getStudentListService.getStudentList();
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     @GetMapping("/findUserId")
 =======
+=======
+>>>>>>> Stashed changes
     @GetMapping("/users/{userEmail}")
 >>>>>>> Stashed changes
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
