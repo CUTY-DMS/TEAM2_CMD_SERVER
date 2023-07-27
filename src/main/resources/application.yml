@@ -32,10 +32,9 @@ mail:
       port : 465
     port : 465
 
-  AdminMail:
-    id : b57062562@gmail.com
-    password : vjygnzrgwzpuovau
-
+AdminMail:
+  id : b57062562@gmail.com
+  password : qbtbnshntzeuzdeh
 
 server:
   port: 8080
