@@ -1,18 +1,29 @@
 package com.example.cmdproject_team2.domain.user.presentation;
 
+<<<<<<< Updated upstream
 import com.example.cmdproject_team2.domain.auth.presentation.dto.request.CheckPasswordRequest;
 import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.cmdproject_team2.domain.auth.service.*;
+=======
+import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
+>>>>>>> Stashed changes
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
-import com.example.cmdproject_team2.domain.user.service.adminService.*;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.AdminDetailsResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentDetailsResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentListResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.UserIdResponse;
+import com.example.cmdproject_team2.domain.user.service.adminService.GetAdminDetailsService;
+import com.example.cmdproject_team2.domain.user.service.adminService.LoginAdminService;
+import com.example.cmdproject_team2.domain.user.service.adminService.ModifyAdminInfoService;
+import com.example.cmdproject_team2.domain.user.service.adminService.SignupAdminService;
 import com.example.cmdproject_team2.domain.user.service.commonService.*;
-import com.example.cmdproject_team2.domain.user.service.studentService.*;
+import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
+import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
+import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 
 @RestController
@@ -24,7 +35,6 @@ public class UserController {
     private final GetStudentListService getStudentListService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
-    private final LogoutService logoutService;
 
 
     //STUDENT
@@ -50,8 +60,12 @@ public class UserController {
     public StudentListResponse getStudentList(){
         return getStudentListService.getStudentList();
     }
+<<<<<<< Updated upstream
 
     @GetMapping("/findUserId")
+=======
+    @GetMapping("/users/{userEmail}")
+>>>>>>> Stashed changes
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
         return findUserIdService.findUserId(userEmail);
     }
