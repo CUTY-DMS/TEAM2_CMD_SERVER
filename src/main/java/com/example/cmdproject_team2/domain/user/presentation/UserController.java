@@ -1,5 +1,8 @@
 package com.example.cmdproject_team2.domain.user.presentation;
 
+import com.example.cmdproject_team2.domain.auth.presentation.dto.request.CheckPasswordRequest;
+import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
+import com.example.cmdproject_team2.domain.auth.service.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
 import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
 import com.example.cmdproject_team2.domain.user.service.adminService.*;
@@ -19,8 +22,6 @@ public class UserController {
     //PUBLIC
     private final GetStudentDetailsService getStudentDetailsService;
     private final GetStudentListService getStudentListService;
-    private final DuplicateUserIdService duplicateUserIdService;
-    private final CheckPasswordService checkPasswordService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
     private final LogoutService logoutService;
@@ -70,7 +71,6 @@ public class UserController {
         logoutService.logout();
     }
 
-
     //STUDENT
     @PostMapping("/signup/student")
     public void userSignup(@RequestBody StudentSignupRequest request) {
@@ -78,7 +78,7 @@ public class UserController {
     }
     @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
-        return studentLoginService.loginUser(request);
+        return studentLoginService.login(request);
     }
     @PatchMapping("/student/{userId}")
     public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){

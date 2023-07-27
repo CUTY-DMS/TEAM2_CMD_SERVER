@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.user.presentation.dto.request;
+package com.example.cmdproject_team2.domain.auth.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

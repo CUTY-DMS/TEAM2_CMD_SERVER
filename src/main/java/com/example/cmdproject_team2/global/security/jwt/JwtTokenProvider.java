@@ -3,7 +3,7 @@ package com.example.cmdproject_team2.global.security.jwt;
 import com.example.cmdproject_team2.domain.auth.domain.RefreshToken;
 import com.example.cmdproject_team2.domain.auth.domain.RefreshTokenRepository;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.TokenResponse;
+import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.cmdproject_team2.global.exception.token.ExpiredTokenException;
 import com.example.cmdproject_team2.global.exception.token.InvalidTokenException;
 import com.example.cmdproject_team2.global.security.auth.CustomUserDetailsService;
