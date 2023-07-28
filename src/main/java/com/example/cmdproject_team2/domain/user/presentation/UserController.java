@@ -1,7 +1,11 @@
 package com.example.cmdproject_team2.domain.user.presentation;
 
+import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.*;
-import com.example.cmdproject_team2.domain.user.presentation.dto.response.*;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.AdminDetailsResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentDetailsResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.StudentListResponse;
+import com.example.cmdproject_team2.domain.user.presentation.dto.response.UserIdResponse;
 import com.example.cmdproject_team2.domain.user.service.adminService.GetAdminDetailsService;
 import com.example.cmdproject_team2.domain.user.service.adminService.LoginAdminService;
 import com.example.cmdproject_team2.domain.user.service.adminService.ModifyAdminInfoService;
