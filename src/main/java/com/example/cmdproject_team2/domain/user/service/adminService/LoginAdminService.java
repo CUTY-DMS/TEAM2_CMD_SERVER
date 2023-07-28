@@ -32,7 +32,7 @@ public class LoginAdminService {
 
         Date now = new Date();
 
-        User user = userRepository.findByUsername(request.getUsername())
+        User user = userRepository.findByUserId(request.getUserId())
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
         if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
