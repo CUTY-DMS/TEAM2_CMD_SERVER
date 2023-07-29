@@ -2,6 +2,7 @@ package com.example.cmdproject_team2.domain.user.service.studentService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
+import com.example.cmdproject_team2.domain.user.enums.MajorType;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.StudentUpdateRequest;
 import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,8 @@ public class UpdateStudentInfoService {
         User user = userRepository.findById(userId)
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
-        user.updateStudentInfo(request.getUsername(), request.getGrader(), request.getSchoolClass(), request.getNumber(),request.getClub(),request.getBirth());
+        user.updateStudentInfo(request.getUsername(), request.getGrader(), request.getSchoolClass(),
+                request.getNumber(),request.getClub(), request.getMajorType(),request.getBirth());
 
         userRepository.save(user);
 

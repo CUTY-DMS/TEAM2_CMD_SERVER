@@ -1,5 +1,6 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.request;
 
+import com.example.cmdproject_team2.domain.user.enums.MajorType;
 import com.fasterxml.jackson.databind.node.LongNode;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,9 +22,9 @@ public class StudentUpdateRequest {
 
     private Long number;
 
-    private String major;
-
     private String club;
+
+    private MajorType majorType;
 
     private Date birth;
 }

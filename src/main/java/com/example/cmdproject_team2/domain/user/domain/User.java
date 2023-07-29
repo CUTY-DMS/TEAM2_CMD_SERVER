@@ -59,12 +59,14 @@ public class User {
         this.schoolClass = schoolClass;
     }
 
-    public void updateStudentInfo(String username, Long grader, Long schoolClass, Long number, String club, Date birth) {
+    public void updateStudentInfo(String username, Long grader, Long schoolClass,
+                                  Long number, String club, MajorType majorType, Date birth) {
         this.username = username;
         this.grader = grader;
         this.schoolClass = schoolClass;
         this.number = number;
         this.club = club;
+        this.majorType = majorType;
         this.birth = birth;
 
     }
