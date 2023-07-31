@@ -43,6 +43,12 @@ public class StudentSignupRequest {
     private Long number;
 
     @NotNull
+    private String club;
+
+    @NotNull
+    private Date birth;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
 

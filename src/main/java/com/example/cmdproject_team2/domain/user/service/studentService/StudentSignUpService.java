@@ -30,6 +30,8 @@ public class StudentSignUpService {
                 .schoolClass(request.getSchoolClass())
                 .type(UserType.STUDENT)
                 .majorType(request.getMajorType())
+                .club(request.getClub())
+                .birth(request.getBirth())
                 .build();
 
         userRepository.save(user);
