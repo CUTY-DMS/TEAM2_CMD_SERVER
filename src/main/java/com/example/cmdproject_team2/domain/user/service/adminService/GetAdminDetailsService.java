@@ -22,4 +22,5 @@ public class GetAdminDetailsService {
 
         return new AdminDetailsResponse(user);
     }
+
 }

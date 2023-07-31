@@ -32,6 +32,7 @@ public class StudentLoginService {
 
         return jwtTokenProvider.createToken(request.getUserId());
     }
+
 }
 
 

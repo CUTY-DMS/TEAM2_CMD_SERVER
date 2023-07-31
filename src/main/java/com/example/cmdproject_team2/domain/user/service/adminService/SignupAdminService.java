@@ -39,4 +39,5 @@ public class SignupAdminService {
 
         userRepository.save(user);
     }
+
 }

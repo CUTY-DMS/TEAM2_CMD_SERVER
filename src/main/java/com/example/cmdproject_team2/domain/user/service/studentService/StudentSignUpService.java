@@ -34,4 +34,5 @@ public class StudentSignUpService {
 
         userRepository.save(user);
     }
+
 }

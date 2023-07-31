@@ -33,13 +33,10 @@ public class UserController {
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
 
-
     //STUDENT
     private final StudentSignUpService studentSignUpService;
     private final StudentLoginService studentLoginService;
     private final UpdateStudentInfoService updateStudentInfoService;
-
-
 
     //ADMIN
     private final SignupAdminService signupAdminService;
@@ -47,12 +44,12 @@ public class UserController {
     private final GetAdminDetailsService getAdminDetailsService;
     private final ModifyAdminInfoService modifyAdminInfoService;
 
-
     //PUBLIC
     @GetMapping("/getStudentDetails")
     public StudentDetailsResponse getStudentDetails() {
         return getStudentDetailsService.getStudentDetails();
     }
+
     @GetMapping("/getStudentList")
     public StudentListResponse getStudentList(){
         return getStudentListService.getStudentList();
@@ -68,37 +65,41 @@ public class UserController {
         updatePasswordService.updatePassword(request);
     }
 
-
     //STUDENT
     @PostMapping("/signup/student")
     public void userSignup(@RequestBody StudentSignupRequest request) {
         studentSignUpService.signUp(request);
     }
+
     @PostMapping("/login/student")
     public TokenResponse userLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.login(request);
     }
+
     @PatchMapping("/student/{userId}")
     public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){
         updateStudentInfoService.updateStudentInfo(userId, request);
     }
-
 
     //ADMIN
     @PostMapping("/signup/admin")
     public void signupAdmin(@RequestBody AdminSignupRequest request) {
         signupAdminService.signupAdmin(request);
     }
+
     @PostMapping("/login/admin")
     public TokenResponse loginAdmin(@RequestBody AdminLoginRequest request) {
         return loginAdminService.loginAdmin(request);
     }
+
     @GetMapping("/admin/{userId}")
     public AdminDetailsResponse getAdminDetails(@PathVariable long userId) {
         return getAdminDetailsService.getAdminDetails(userId);
     }
+
     @PatchMapping("/admin/{userId}")
     public void modifyAdminInfo(@PathVariable long userId, @RequestBody AdminModifyRequest request){
-        modifyAdminInfoService.modifyAdminInfo(userId, request);
+        modifyAdminInfoService.modifyAdminInfo(request);
     }
+
 }
