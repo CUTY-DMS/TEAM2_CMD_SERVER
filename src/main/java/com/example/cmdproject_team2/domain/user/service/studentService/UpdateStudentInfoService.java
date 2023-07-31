@@ -19,7 +19,8 @@ public class UpdateStudentInfoService {
         User user = userRepository.findById(userId)
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
-        user.updateStudentInfo(request.getUsername(), request.getGrader(), request.getSchoolClass(), request.getNumber(), request.getMajorType());
+        user.updateStudentInfo(request.getUsername(), request.getGrader(), request.getSchoolClass(), request.getNumber(), request.getMajorType(),
+                request.getClub(), request.getBirth());
     }
 
 

@@ -24,4 +24,8 @@ public class StudentUpdateRequest {
 
     private MajorType majorType;
 
+    private String club;
+
+    private Date birth;
+
 }
