@@ -22,9 +22,6 @@ public class StudentUpdateRequest {
 
     private Long number;
 
-    private String club;
-
     private MajorType majorType;
 
-    private Date birth;
 }
