@@ -37,6 +37,10 @@ public class User {
 
     private Long number;
 
+    private String club;
+
+    private Date birth;
+
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
 
@@ -57,12 +61,14 @@ public class User {
     }
 
     public void updateStudentInfo(String username, Long grader, Long schoolClass,
-                                  Long number, MajorType majorType) {
+                                  Long number, MajorType majorType, String club, Date birth) {
         this.username = username;
         this.grader = grader;
         this.schoolClass = schoolClass;
         this.number = number;
         this.majorType = majorType;
+        this.club = club;
+        this.birth = birth;
     }
 
     public void updatePassword(String password) {
