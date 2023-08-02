@@ -1,14 +1,13 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.response;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
-import com.example.cmdproject_team2.domain.user.enums.SubjectType;
+import com.example.cmdproject_team2.domain.schedule.enums.SubjectType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.util.Date;
 
 @Getter
 @Builder
