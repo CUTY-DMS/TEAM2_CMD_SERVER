@@ -23,7 +23,7 @@ public class StudentLoginService {
     @Transactional
     public TokenResponse login(StudentLoginRequest request) {
 
-        User user = userRepository.findByUserId(request.getUsername())
+        User user = userRepository.findByUserId(request.getUserId())
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
         if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
