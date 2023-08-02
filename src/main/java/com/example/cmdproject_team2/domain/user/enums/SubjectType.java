@@ -2,6 +2,7 @@ package com.example.cmdproject_team2.domain.user.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
 @Getter
 @RequiredArgsConstructor
 public enum SubjectType {
@@ -19,5 +20,5 @@ public enum SubjectType {
     ;
 
 
-    private final String name;
+    private final String subject;
 }
