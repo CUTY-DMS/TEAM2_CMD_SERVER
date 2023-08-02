@@ -1,16 +1,16 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/cmd?useSSL=false
-    username: root
-    password: ${password:wjdgus2007?}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://3.25.221.219:3306/cmd?useSSL=false&autoReconnect=true
+    username: root
+    password: wjdgus2007?
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   redis:
-    host: localhost
+    host: ${REDIS_HOST}
     port: 6379
 key:
   secretKey: ${secretKey}

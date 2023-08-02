@@ -1,5 +1,6 @@
 package com.example.cmdproject_team2.domain.user.service.adminService;
 
+import com.example.cmdproject_team2.domain.auth.service.DuplicateUserIdService;
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
 import com.example.cmdproject_team2.domain.user.enums.UserType;
@@ -17,10 +18,11 @@ public class SignupAdminService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final DuplicateUserIdService duplicateUserIdService;
 
     public void signupAdmin(AdminSignupRequest request) {
         String password = passwordEncoder.encode(request.getPassword());
-
+        duplicateUserIdService.execute(request.getUserId());
         User user = User.builder()
                 .userId(request.getUserId())
                 .password(password)
