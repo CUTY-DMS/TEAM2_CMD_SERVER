@@ -13,6 +13,4 @@ public class NotificationRequest {
     private String title;
 
     private String content;
-
-    private LocalDateTime expiredAt;
 }
