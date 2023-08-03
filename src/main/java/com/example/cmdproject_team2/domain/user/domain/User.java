@@ -3,10 +3,7 @@ package com.example.cmdproject_team2.domain.user.domain;
 import com.example.cmdproject_team2.domain.user.enums.MajorType;
 import com.example.cmdproject_team2.domain.user.enums.SubjectType;
 import com.example.cmdproject_team2.domain.user.enums.UserType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -72,6 +69,10 @@ public class User {
     }
 
     public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 }
