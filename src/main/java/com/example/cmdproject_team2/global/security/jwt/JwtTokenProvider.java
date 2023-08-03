@@ -79,7 +79,7 @@ public class JwtTokenProvider {
         RefreshToken token = refreshTokenRepository.findByToken(refreshToken)
                 .orElseThrow(()-> InvalidTokenException.EXCEPTION);
 
-        String userId = userRepository.findByUsername(token.getUserId())
+        String userId = userRepository.findByUserId(token.getUserId())
                 .orElseThrow(() -> InvalidTokenException.EXCEPTION).getUserId();
 
         refreshTokenRepository.delete(token);
