@@ -1,25 +1,25 @@
 package com.example.cmdproject_team2.global.security.auth;
 
+import com.example.cmdproject_team2.domain.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-@Getter
-@AllArgsConstructor
-public class CustomUserDetails implements UserDetails {
-    private final String username;
+public record CustomUserDetails(User user) implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return user.getUsername();
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+        return new ArrayList<>(Collections.singleton(new SimpleGrantedAuthority("ROLE_"+user.getType().toString())));
     }
 
     @Override

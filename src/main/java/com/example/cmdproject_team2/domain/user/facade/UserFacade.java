@@ -17,8 +17,9 @@ public class UserFacade {
 
     public User currentUser() {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+
         return userRepository.findByUserId(userId)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
     }
 
     public void checkUserExist(String userId) {
