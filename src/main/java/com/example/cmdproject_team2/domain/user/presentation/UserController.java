@@ -68,8 +68,8 @@ public class UserController {
     public UserController(PasswordResetService passwordResetService) {
         this.passwordResetService = passwordResetService;
     }
-    @PostMapping("/resetPassword")
-    public ResponseEntity<String> resetPassword(@RequestBody String userEmail) {
+    @PostMapping("/findPassword")
+    public ResponseEntity<String> findPassword(@RequestBody String userEmail) {
         try {
             passwordResetService.resetPasswordAndSendEmail(userEmail);
             return ResponseEntity.ok("임시 비밀번호가 이메일로 발송되었습니다.");
