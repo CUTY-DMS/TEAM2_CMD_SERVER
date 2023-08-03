@@ -4,6 +4,7 @@ import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
 import com.example.cmdproject_team2.global.exception.user.EmailMatchedException;
 import com.example.cmdproject_team2.global.exception.user.UserExistsException;
+import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class UserFacade {
     public User currentUser() {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByUserId(userId)
-                .orElseThrow();
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }
 
     public void checkUserExist(String userId) {
