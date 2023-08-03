@@ -1,6 +1,6 @@
 package com.example.cmdproject_team2.domain.user.presentation.dto.request;
 
-import com.example.cmdproject_team2.domain.schedule.enums.SubjectType;
+import com.example.cmdproject_team2.domain.user.enums.SubjectType;
 import com.example.cmdproject_team2.domain.user.enums.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
