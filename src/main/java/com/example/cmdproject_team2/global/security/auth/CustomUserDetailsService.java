@@ -3,6 +3,7 @@ package com.example.cmdproject_team2.global.security.auth;
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
 import com.example.cmdproject_team2.domain.user.facade.UserFacade;
+import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userId) {
 
         User user = userRepository.findByUserId(userId)
-                .orElseThrow();
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
         return new CustomUserDetails(user);
     }

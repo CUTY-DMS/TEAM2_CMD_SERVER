@@ -37,8 +37,8 @@ public class LoginAdminService {
             throw PasswordMismatchException.EXCEPTION;
         }
         return TokenResponse.builder()
-                .refreshToken(jwtTokenProvider.createRefreshToken(user.getUsername()))
-                .accessToken(jwtTokenProvider.createAccessToken(user.getUsername()))
+                .refreshToken(jwtTokenProvider.createRefreshToken(user.getUserId()))
+                .accessToken(jwtTokenProvider.createAccessToken(user.getUserId()))
                 .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
                 .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .build();
