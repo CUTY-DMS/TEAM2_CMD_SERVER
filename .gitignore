@@ -45,4 +45,5 @@ out
 gen
 
 
-global/config/EmailConfig.java
+src/main/java/com/example/global/config/EmailConfig.java
+src/main/resources/*.yml
