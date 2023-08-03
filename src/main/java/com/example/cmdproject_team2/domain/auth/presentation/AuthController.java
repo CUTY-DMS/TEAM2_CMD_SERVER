@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @RestController
@@ -27,8 +28,8 @@ public class AuthController {
         return tokenReissueService.reissue(request.getRefreshToken());
     }
 
-    @RequestMapping(value = "/userId", method = RequestMethod.HEAD)
-    public void duplicateUserIdExist(@NotNull @RequestParam(name = "userId") String userId) {
+    @RequestMapping(value = "/userId", method = RequestMethod.GET)
+    public void duplicateUserIdExist(@NotBlank @RequestParam(name = "userId") String userId) {
         duplicateUserIdService.execute(userId);
     }
 
