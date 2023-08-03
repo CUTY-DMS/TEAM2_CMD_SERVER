@@ -44,9 +44,9 @@ public class UserController {
     private final ModifyAdminInfoService modifyAdminInfoService;
 
     //PUBLIC
-    @GetMapping("/getStudentDetails")
-    public StudentDetailsResponse getStudentDetails() {
-        return getStudentDetailsService.getStudentDetails();
+    @GetMapping("/student/{userId}")
+    public StudentDetailsResponse getStudentDetails(@PathVariable Long userId) {
+        return getStudentDetailsService.getStudentDetails(userId);
     }
 
     @GetMapping("/getStudentList")
