@@ -7,10 +7,9 @@ import com.example.cmdproject_team2.domain.user.presentation.dto.request.AdminMo
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-@Transactional
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ModifyAdminInfoService {
 
     private final UserFacade userFacade;

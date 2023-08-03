@@ -4,10 +4,9 @@ import com.example.cmdproject_team2.domain.notification.domain.NotificationRepos
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-@Transactional
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class DeleteNotificationService {
 
     private final NotificationRepository notificationRepository;

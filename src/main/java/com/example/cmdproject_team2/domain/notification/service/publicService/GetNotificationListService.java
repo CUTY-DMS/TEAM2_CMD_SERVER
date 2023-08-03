@@ -8,10 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-@Transactional
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class GetNotificationListService {
 
     private final NotificationRepository notificationRepository;

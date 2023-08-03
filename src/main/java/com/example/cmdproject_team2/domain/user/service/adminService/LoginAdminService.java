@@ -14,10 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-
-@Transactional
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class LoginAdminService {
 
     private final PasswordEncoder passwordEncoder;

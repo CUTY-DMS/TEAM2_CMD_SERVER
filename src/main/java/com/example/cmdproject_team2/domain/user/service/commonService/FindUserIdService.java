@@ -6,9 +6,8 @@ import com.example.cmdproject_team2.domain.user.presentation.dto.response.UserId
 import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class FindUserIdService {
 
     private final UserRepository userRepository;
