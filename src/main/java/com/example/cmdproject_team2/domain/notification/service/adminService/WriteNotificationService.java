@@ -19,6 +19,7 @@ public class WriteNotificationService {
                 Notification.builder()
                         .title(request.getTitle())
                         .content(request.getContent())
+                        .expiredAt(request.getExpiredAt())
                         .build());
     }
 }
