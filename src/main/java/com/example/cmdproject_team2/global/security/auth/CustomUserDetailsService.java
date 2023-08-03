@@ -11,12 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-    private final UserFacade userFacade;
-
+    private final UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) {
 
-        User user = userFacade.currentUser();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow();
+
         return new CustomUserDetails(user.getUsername());
     }
 }

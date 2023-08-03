@@ -44,7 +44,9 @@ public class JwtTokenProvider {
     }
 
     public String createAccessToken(String username) {
+
         Date now = new Date();
+
         return Jwts.builder()
                 .setSubject(username)
                 .claim("type", "access")

@@ -20,6 +20,6 @@ public class ModifyNotificationService {
                 .orElseThrow(()-> NotificationNotFoundException.EXCEPTION);
 
         notification.modifyTitleAndContent(request.getTitle(), request.getContent());
-        
+
     }
 }
