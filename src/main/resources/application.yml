@@ -21,14 +21,21 @@ jwt:
   accessExpiration: 3600
   refreshExpiration: 271000
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: 4mj.eo@dsm.hs.kr
-    password: rlaaudwls1!
-    properties:
-      mail.smtp.auth: true
-      mail.smtp.starttls.enable: true
+mail:
+  smtp:
+    auth : true
+    starttls:
+      required : true
+      enable : true
+    socketFactory:
+      class : javax.net.ssl.SSLSocketFactory
+      fallback : false
+      port : 465
+    port : 465
+
+AdminMail:
+  id : b57062562@gmail.com
+  password : qbtbnshntzeuzdeh
 
 server:
   port: 8080
