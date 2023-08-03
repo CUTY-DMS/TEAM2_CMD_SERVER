@@ -76,9 +76,9 @@ public class UserController {
         return studentLoginService.login(request);
     }
 
-    @PatchMapping("/student/{userId}")
-    public void updateStudentInfo(@PathVariable long userId, @RequestBody StudentUpdateRequest request){
-        updateStudentInfoService.updateStudentInfo(userId, request);
+    @PatchMapping("/student")
+    public void updateStudentInfo(@RequestBody StudentUpdateRequest request){
+        updateStudentInfoService.updateStudentInfo(request);
     }
 
     //ADMIN
@@ -92,9 +92,9 @@ public class UserController {
         return loginAdminService.loginAdmin(request);
     }
 
-    @GetMapping("/admin/{userId}")
-    public AdminDetailsResponse getAdminDetails(@PathVariable long userId) {
-        return getAdminDetailsService.getAdminDetails(userId);
+    @GetMapping("/admin")
+    public AdminDetailsResponse getAdminDetails() {
+        return getAdminDetailsService.getAdminDetails();
     }
 
     @PatchMapping("/admin")
