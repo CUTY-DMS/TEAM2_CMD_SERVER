@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UpdateStudentInfoService {
 
     private final UserRepository userRepository;
 
-    @Transactional
     public void updateStudentInfo(Long userId, StudentUpdateRequest request) {
         User user = userRepository.findById(userId)
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);

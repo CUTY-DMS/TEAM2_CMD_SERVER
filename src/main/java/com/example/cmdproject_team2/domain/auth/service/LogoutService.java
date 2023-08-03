@@ -8,16 +8,14 @@ import com.example.cmdproject_team2.global.exception.user.RefreshTokenNotFoundEx
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class LogoutService {
 
     private final UserFacade userFacade;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    @Transactional
     public void logout() {
         User user = userFacade.currentUser();
 

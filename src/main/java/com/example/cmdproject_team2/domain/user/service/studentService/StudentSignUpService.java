@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class StudentSignUpService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final DuplicateUserIdService duplicateUserIdService;
 
-    @Transactional
     public void signUp(StudentSignupRequest request) {
         String password = passwordEncoder.encode(request.getPassword());
         duplicateUserIdService.execute(request.getUserId());

@@ -17,7 +17,6 @@ public class UpdatePasswordService {
     private final UserFacade userFacade;
     private final PasswordEncoder passwordEncoder;
 
-    @Transactional
     public void updatePassword(UpdatePasswordRequest request) {
         User user = userFacade.currentUser();
 
