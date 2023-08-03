@@ -15,7 +15,6 @@ import com.example.cmdproject_team2.domain.user.service.studentService.StudentLo
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
 import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,10 +63,6 @@ public class UserController {
         updatePasswordService.updatePassword(request);
     }
 
-    @Autowired
-    public UserController(PasswordResetService passwordResetService) {
-        this.passwordResetService = passwordResetService;
-    }
     @PostMapping("/findPassword")
     public ResponseEntity<String> findPassword(@RequestBody String userEmail) {
         try {
