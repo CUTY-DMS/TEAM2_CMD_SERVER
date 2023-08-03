@@ -21,5 +21,6 @@ public class FindUserIdService {
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return new UserIdResponse(user.getUserId());
+
     }
 }

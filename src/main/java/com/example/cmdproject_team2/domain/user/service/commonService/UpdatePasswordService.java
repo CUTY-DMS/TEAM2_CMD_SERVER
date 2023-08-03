@@ -18,6 +18,7 @@ public class UpdatePasswordService {
     private final PasswordEncoder passwordEncoder;
 
     public void updatePassword(UpdatePasswordRequest request) {
+
         User user = userFacade.currentUser();
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
@@ -26,4 +27,5 @@ public class UpdatePasswordService {
 
         user.updatePassword(passwordEncoder.encode(request.getNewPassword()));
     }
+
 }

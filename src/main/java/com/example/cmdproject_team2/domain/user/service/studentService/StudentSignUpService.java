@@ -19,8 +19,11 @@ public class StudentSignUpService {
     private final DuplicateUserIdService duplicateUserIdService;
 
     public void signUp(StudentSignupRequest request) {
+
         String password = passwordEncoder.encode(request.getPassword());
+
         duplicateUserIdService.execute(request.getUserId());
+
         User user = User.builder()
                 .userId(request.getUserId())
                 .username(request.getUsername())
@@ -36,6 +39,7 @@ public class StudentSignUpService {
                 .build();
 
         userRepository.save(user);
+
     }
 
 }

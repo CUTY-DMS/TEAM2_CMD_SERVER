@@ -12,7 +12,7 @@ public class DeleteNotificationService {
     private final NotificationRepository notificationRepository;
 
     public void deleteNotification(Long notificationId) {
-
         notificationRepository.deleteById(notificationId);
     }
+
 }

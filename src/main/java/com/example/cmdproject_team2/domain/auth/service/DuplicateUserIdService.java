@@ -14,4 +14,5 @@ public class DuplicateUserIdService {
     public void execute(String userId) {
         userFacade.checkUserExist(userId);
     }
+
 }

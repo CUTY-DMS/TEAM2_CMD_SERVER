@@ -17,10 +17,13 @@ public class CheckPasswordService {
     private final UserFacade userFacade;
 
     public void execute(CheckPasswordRequest request) {
+
         User user = userFacade.currentUser();
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMismatchException.EXCEPTION;
         }
+
     }
+
 }

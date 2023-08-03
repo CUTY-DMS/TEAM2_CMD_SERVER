@@ -17,11 +17,14 @@ public class LogoutService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     public void logout() {
+
         User user = userFacade.currentUser();
 
         RefreshToken refreshToken = refreshTokenRepository.findById(user.getUserId())
                 .orElseThrow(() -> RefreshTokenNotFoundException.EXCEPTION);
 
         refreshTokenRepository.delete(refreshToken);
+
     }
+
 }

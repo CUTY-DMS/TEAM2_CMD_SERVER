@@ -20,6 +20,7 @@ public class SignupAdminService {
     private final DuplicateUserIdService duplicateUserIdService;
 
     public void signupAdmin(AdminSignupRequest request) {
+
         String password = passwordEncoder.encode(request.getPassword());
         duplicateUserIdService.execute(request.getUserId());
         User user = User.builder()
@@ -37,8 +38,8 @@ public class SignupAdminService {
         if(!request.getSecretKey().equals(user.getSecretKey())) {
             throw NotAdminException.EXCEPTION;
         }
-
         userRepository.save(user);
+
     }
 
 }

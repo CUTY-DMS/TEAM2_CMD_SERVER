@@ -15,9 +15,12 @@ public class ModifyAdminInfoService {
     private final UserFacade userFacade;
 
     public void modifyAdminInfo(AdminModifyRequest request) {
+
         User user = userFacade.currentUser();
 
-        user.modifyAdminInfo(request.getUsername(), request.getGrader(), request.getSchoolClass(), request.getSubjectType());
+        user.modifyAdminInfo(request.getUsername(), request.getGrader(),
+                request.getSchoolClass(), request.getSubjectType());
+
     }
 
 }

@@ -21,5 +21,7 @@ public class WriteNotificationService {
                         .content(request.getContent())
                         .expiredAt(request.getExpiredAt())
                         .build());
+
     }
+
 }
