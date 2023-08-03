@@ -28,7 +28,7 @@ public class AuthController {
         return tokenReissueService.reissue(request.getRefreshToken());
     }
 
-    @RequestMapping(value = "/userId", method = RequestMethod.GET)
+    @RequestMapping(value = "/userId", method = RequestMethod.HEAD)
     public void duplicateUserIdExist(@NotBlank @RequestParam(name = "userId") String userId) {
         duplicateUserIdService.execute(userId);
     }
