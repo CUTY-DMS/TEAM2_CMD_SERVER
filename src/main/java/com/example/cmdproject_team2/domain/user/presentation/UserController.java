@@ -10,14 +10,13 @@ import com.example.cmdproject_team2.domain.user.service.adminService.GetAdminDet
 import com.example.cmdproject_team2.domain.user.service.adminService.LoginAdminService;
 import com.example.cmdproject_team2.domain.user.service.adminService.ModifyAdminInfoService;
 import com.example.cmdproject_team2.domain.user.service.adminService.SignupAdminService;
-import com.example.cmdproject_team2.domain.user.service.commonService.FindUserIdService;
-import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentDetailsService;
-import com.example.cmdproject_team2.domain.user.service.commonService.GetStudentListService;
-import com.example.cmdproject_team2.domain.user.service.commonService.UpdatePasswordService;
+import com.example.cmdproject_team2.domain.user.service.commonService.*;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
 import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,11 +25,12 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class UserController {
 
-    //PUBLIC
+    //COMMON
     private final GetStudentDetailsService getStudentDetailsService;
     private final GetStudentListService getStudentListService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
+    private final PasswordResetService passwordResetService;
 
     //STUDENT
     private final StudentSignUpService studentSignUpService;
@@ -62,6 +62,20 @@ public class UserController {
     @PatchMapping("/updatePassword")
     public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
         updatePasswordService.updatePassword(request);
+    }
+
+    @Autowired
+    public UserController(PasswordResetService passwordResetService) {
+        this.passwordResetService = passwordResetService;
+    }
+    @PostMapping("/resetPassword")
+    public ResponseEntity<String> resetPassword(@RequestBody String userEmail) {
+        try {
+            passwordResetService.resetPasswordAndSendEmail(userEmail);
+            return ResponseEntity.ok("임시 비밀번호가 이메일로 발송되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     //STUDENT
