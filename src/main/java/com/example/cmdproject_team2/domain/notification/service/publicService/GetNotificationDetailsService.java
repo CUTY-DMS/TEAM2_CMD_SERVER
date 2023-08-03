@@ -7,6 +7,7 @@ import com.example.cmdproject_team2.global.exception.notification.NotificationNo
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -20,5 +21,7 @@ public class GetNotificationDetailsService {
                 .orElseThrow(()-> NotificationNotFoundException.EXCEPTION);
 
         return new NotificationResponse(notification);
+
     }
+
 }

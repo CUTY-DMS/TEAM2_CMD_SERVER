@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
@@ -40,4 +41,5 @@ public class AuthController {
     public void logout() {
         logoutService.logout();
     }
+
 }

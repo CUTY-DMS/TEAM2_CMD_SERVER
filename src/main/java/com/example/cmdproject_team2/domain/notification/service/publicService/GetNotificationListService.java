@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -21,5 +22,7 @@ public class GetNotificationListService {
                 .stream()
                 .map(NotificationResponse::new)
                 .collect(Collectors.toList());
+
     }
+
 }
