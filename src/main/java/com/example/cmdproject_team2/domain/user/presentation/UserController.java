@@ -97,8 +97,8 @@ public class UserController {
         return getAdminDetailsService.getAdminDetails(userId);
     }
 
-    @PatchMapping("/admin/{userId}")
-    public void modifyAdminInfo(@PathVariable long userId, @RequestBody AdminModifyRequest request){
+    @PatchMapping("/admin")
+    public void modifyAdminInfo(@RequestBody AdminModifyRequest request){
         modifyAdminInfoService.modifyAdminInfo(request);
     }
 
