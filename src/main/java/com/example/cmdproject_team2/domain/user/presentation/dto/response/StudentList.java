@@ -8,8 +8,6 @@ import lombok.Getter;
 @Builder
 public class StudentList {
 
-    private Long id;
-
     private String userName;
 
     private Long grader;
@@ -20,7 +18,6 @@ public class StudentList {
 
     public static StudentList of(User user) {
         return StudentList.builder()
-                .id(user.getId())
                 .userName(user.getUsername())
                 .grader(user.getGrader())
                 .schoolClass(user.getSchoolClass())
