@@ -23,6 +23,10 @@ public class StudentDetailsResponse {
 
     private Long number;
 
+    private String club;
+
+    private Date birth;
+
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
 
@@ -32,5 +36,7 @@ public class StudentDetailsResponse {
         schoolClass = user.getSchoolClass();
         number = user.getNumber();
         majorType = user.getMajorType();
+        club = user.getClub();
+        birth = user.getBirth();
     }
 }
