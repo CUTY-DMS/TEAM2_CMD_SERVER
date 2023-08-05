@@ -2,7 +2,7 @@ package com.example.cmdproject_team2.domain.user.service.commonService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,19 +12,14 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.util.Base64;
 
+
+@RequiredArgsConstructor
 @Service
 public class PasswordResetService {
 
     private final UserRepository userRepository;
     private final JavaMailSender mailSender;
     private final BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
-    public PasswordResetService(UserRepository userRepository, JavaMailSender mailSender, BCryptPasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.mailSender = mailSender;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public void resetPasswordAndSendEmail(String userEmail) throws Exception {
         User user = userRepository.findByUserEmail(userEmail)

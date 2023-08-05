@@ -17,7 +17,6 @@ public class GetAdminDetailsService {
     public AdminDetailsResponse getAdminDetails() {
 
         User user = userFacade.currentUser();
-
         return new AdminDetailsResponse(user);
 
     }
