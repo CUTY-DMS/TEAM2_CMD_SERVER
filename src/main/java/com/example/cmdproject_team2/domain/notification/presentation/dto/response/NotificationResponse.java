@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class NotificationResponse {
 
+    private Long id;
+
     private String title;
 
     private String content;
@@ -20,6 +22,7 @@ public class NotificationResponse {
     private LocalDateTime expiredAt;
 
     public NotificationResponse(Notification notification){
+        id= notification.getId();
         title = notification.getTitle();
         content = notification.getContent();
         expiredAt = notification.getExpiredAt();
