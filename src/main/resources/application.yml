@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://52.65.160.119:3306/cmd?useSSL=false&allowPublicKeyRetrieval=true
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://3.25.221.219:3306/cmd?useSSL=false&autoReconnect=true
+    username: root
+    password: wjdgus2007?
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,17 +12,6 @@ spring:
   redis:
     host: ${REDIS_HOST:localhost}
     port: 6379
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: b57062562@gmail.com
-    password: qbtbnshntzeuzdeh
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
 key:
   secretKey: ${secretKey}
 jwt:
@@ -32,7 +21,14 @@ jwt:
   accessExpiration: 3600
   refreshExpiration: 271000
 
-
+mail:
+  host: smtp.gamil.com
+  port: 587
+  username: 4mj.eo@dsm.hs.kr
+  password: Rlaaudwls1!
+  properties:
+    mail.smtp.auth: true
+    mail.smtp.starttls.enable: true
 
 server:
   port: 8080
