@@ -17,14 +17,11 @@ public class NotificationResponse {
 
     private String title;
 
-    private String content;
-
     private LocalDateTime expiredAt;
 
     public NotificationResponse(Notification notification){
         id= notification.getId();
         title = notification.getTitle();
-        content = notification.getContent();
         expiredAt = notification.getExpiredAt();
     }
 }

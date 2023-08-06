@@ -47,7 +47,7 @@ public class PasswordResetService {
 
     private String generateTemporaryPassword() {
         SecureRandom random = new SecureRandom();
-        byte[] bytes = new byte[10]; // 12자리의 임시 비밀번호 생성
+        byte[] bytes = new byte[10];
         random.nextBytes(bytes);
         return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
     }
