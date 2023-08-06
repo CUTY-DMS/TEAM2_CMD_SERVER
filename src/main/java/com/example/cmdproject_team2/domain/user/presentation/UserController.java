@@ -11,12 +11,12 @@ import com.example.cmdproject_team2.domain.user.service.adminService.LoginAdminS
 import com.example.cmdproject_team2.domain.user.service.adminService.ModifyAdminInfoService;
 import com.example.cmdproject_team2.domain.user.service.adminService.SignupAdminService;
 import com.example.cmdproject_team2.domain.user.service.commonService.*;
+import com.example.cmdproject_team2.domain.user.service.studentService.GetMyDetailsService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentSignUpService;
 import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,16 +26,17 @@ import javax.validation.Valid;
 public class UserController {
 
     //COMMON
-    private final GetMyDetailsService getMyDetailsService;
     private final GetStudentListService getStudentListService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
     private final PasswordResetService passwordResetService;
+    private final GetStudentDetailsService getStudentDetailsService;
 
     //STUDENT
     private final StudentSignUpService studentSignUpService;
     private final StudentLoginService studentLoginService;
     private final UpdateStudentInfoService updateStudentInfoService;
+    private final GetMyDetailsService getMyDetailsService;
 
     //ADMIN
     private final SignupAdminService signupAdminService;
@@ -44,10 +45,6 @@ public class UserController {
     private final ModifyAdminInfoService modifyAdminInfoService;
 
     //PUBLIC
-    @GetMapping("/student")
-    public StudentDetailsResponse getStudentDetails() {
-        return getMyDetailsService.getStudentDetails();
-    }
 
     @GetMapping("/getStudentList")
     public StudentListResponse getStudentList(){
@@ -74,6 +71,12 @@ public class UserController {
         }
     }
 
+    @GetMapping("student/{userId}")
+    public StudentDetailsResponse getStudentDetails(@PathVariable String userId) {
+
+        return getStudentDetailsService.getStudentDetails(userId);
+    }
+
     //STUDENT
     @PostMapping("/signup/student")
     public void userSignup(@RequestBody StudentSignupRequest request) {
@@ -88,6 +91,11 @@ public class UserController {
     @PatchMapping("/student")
     public void updateStudentInfo(@RequestBody StudentUpdateRequest request){
         updateStudentInfoService.updateStudentInfo(request);
+    }
+
+    @GetMapping("/student")
+    public StudentDetailsResponse getMyDetails() {
+        return getMyDetailsService.getMyDetails();
     }
 
     //ADMIN
@@ -112,7 +120,3 @@ public class UserController {
     }
 
 }
-
-
-@Transactional
-public class
