@@ -14,12 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class GetStudentDetailsService {
 
-    private final UserRepository userRepository;
+    private final UserFacade userFacade;
+    public StudentDetailsResponse getStudentDetails() {
 
-    public StudentDetailsResponse getStudentDetails(Long userId) {
-
-        User user = userRepository.findById(userId)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        User user = userFacade.currentUser();
 
         return new StudentDetailsResponse(user);
     }
