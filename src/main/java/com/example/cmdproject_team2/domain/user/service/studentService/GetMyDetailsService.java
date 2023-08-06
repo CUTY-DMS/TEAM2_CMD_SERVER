@@ -1,4 +1,4 @@
-package com.example.cmdproject_team2.domain.user.service.commonService;
+package com.example.cmdproject_team2.domain.user.service.studentService;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.facade.UserFacade;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GetMyDetailsService {
 
     private final UserFacade userFacade;
-    public StudentDetailsResponse getStudentDetails() {
+    public StudentDetailsResponse getMyDetails() {
 
         User user = userFacade.currentUser();
 
