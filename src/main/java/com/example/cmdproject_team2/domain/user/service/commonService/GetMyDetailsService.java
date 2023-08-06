@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class GetStudentDetailsService {
+public class GetMyDetailsService {
 
     private final UserFacade userFacade;
     public StudentDetailsResponse getStudentDetails() {

@@ -16,6 +16,7 @@ import com.example.cmdproject_team2.domain.user.service.studentService.StudentSi
 import com.example.cmdproject_team2.domain.user.service.studentService.UpdateStudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ import javax.validation.Valid;
 public class UserController {
 
     //COMMON
-    private final GetStudentDetailsService getStudentDetailsService;
+    private final GetMyDetailsService getMyDetailsService;
     private final GetStudentListService getStudentListService;
     private final FindUserIdService findUserIdService;
     private final UpdatePasswordService updatePasswordService;
@@ -45,7 +46,7 @@ public class UserController {
     //PUBLIC
     @GetMapping("/student")
     public StudentDetailsResponse getStudentDetails() {
-        return getStudentDetailsService.getStudentDetails();
+        return getMyDetailsService.getStudentDetails();
     }
 
     @GetMapping("/getStudentList")
@@ -111,3 +112,7 @@ public class UserController {
     }
 
 }
+
+
+@Transactional
+public class
