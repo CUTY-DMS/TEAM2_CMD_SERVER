@@ -50,7 +50,7 @@ public class UserController {
         return getStudentListService.getStudentList();
     }
 
-    @GetMapping("/users/{userEmail}")
+    @PostMapping("/users/{userEmail}")
     public UserIdResponse findUserId(@PathVariable("userEmail") String userEmail) {
         return findUserIdService.findUserId(userEmail);
     }
