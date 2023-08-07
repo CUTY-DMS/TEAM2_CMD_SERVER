@@ -61,9 +61,9 @@ public class UserController {
     }
 
     @PostMapping("/findPassword")
-    public ResponseEntity<String> findPassword(@RequestBody String userEmail) {
+    public ResponseEntity<String> findPassword(@RequestBody FindPasswordRequest request) {
         try {
-            passwordResetService.resetPasswordAndSendEmail(userEmail);
+            passwordResetService.resetPasswordAndSendEmail(request.getUserEmail());
             return ResponseEntity.ok("임시 비밀번호가 이메일로 발송되었습니다.");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
