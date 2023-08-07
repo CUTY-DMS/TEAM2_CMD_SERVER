@@ -45,7 +45,6 @@ public class UserController {
     private final ModifyAdminInfoService modifyAdminInfoService;
 
     //PUBLIC
-
     @GetMapping("/getStudentList")
     public StudentListResponse getStudentList(){
         return getStudentListService.getStudentList();

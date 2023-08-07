@@ -27,4 +27,5 @@ public class NotificationResponse {
         content = notification.getContent();
         expiredAt = notification.getExpiredAt();
     }
+
 }
