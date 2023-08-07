@@ -19,7 +19,7 @@ public class UpdateStudentInfoService {
         User user = userFacade.currentUser();
 
         user.updateStudentInfo(request.getUsername(), request.getGrader(), request.getSchoolClass(), request.getNumber(), request.getMajorType(),
-                request.getClub(), request.getBirth());
+                request.getClub(), request.getYear(), request.getMonth(), request.getDay());
 
     }
 

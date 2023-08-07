@@ -25,7 +25,11 @@ public class StudentDetailsResponse {
 
     private String club;
 
-    private Date birth;
+    private Long year;
+
+    private Long month;
+
+    private Long day;
 
     @Enumerated(EnumType.STRING)
     private MajorType majorType;
@@ -37,6 +41,8 @@ public class StudentDetailsResponse {
         number = user.getNumber();
         majorType = user.getMajorType();
         club = user.getClub();
-        birth = user.getBirth();
+        year = user.getYear();
+        month = user.getMonth();
+        day = user.getDay();
     }
 }

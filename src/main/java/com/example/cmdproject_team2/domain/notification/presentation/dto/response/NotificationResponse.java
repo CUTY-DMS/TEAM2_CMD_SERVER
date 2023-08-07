@@ -22,7 +22,7 @@ public class NotificationResponse {
     private LocalDateTime expiredAt;
 
     public NotificationResponse(Notification notification) {
-        id= notification.getId();
+        id = notification.getId();
         title = notification.getTitle();
         content = notification.getContent();
         expiredAt = notification.getExpiredAt();

@@ -33,6 +33,12 @@ public class StudentUpdateRequest {
     private String club;
 
     @NotNull
-    private Date birth;
+    private Long year;
+
+    @NotNull
+    private Long month;
+
+    @NotNull
+    private Long day;
 
 }

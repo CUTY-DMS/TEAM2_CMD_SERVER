@@ -46,7 +46,13 @@ public class StudentSignupRequest {
     private String club;
 
     @NotNull
-    private Date birth;
+    private Long year;
+
+    @NotNull
+    private Long month;
+
+    @NotNull
+    private Long day;
 
     @NotNull
     @Enumerated(EnumType.STRING)
