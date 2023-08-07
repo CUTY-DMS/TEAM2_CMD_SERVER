@@ -16,12 +16,15 @@ public class StudentList {
 
     private Long number;
 
+    private String userId;
+
     public static StudentList of(User user) {
         return StudentList.builder()
                 .userName(user.getUsername())
                 .grader(user.getGrader())
                 .schoolClass(user.getSchoolClass())
                 .number(user.getNumber())
+                .userId(user.getUserId())
                 .build();
     }
 }
