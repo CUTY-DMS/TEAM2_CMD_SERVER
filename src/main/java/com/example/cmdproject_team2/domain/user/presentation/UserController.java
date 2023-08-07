@@ -78,7 +78,7 @@ public class UserController {
 
     //STUDENT
     @PostMapping("/signup/student")
-    public void userSignup(@RequestBody StudentSignupRequest request) {
+    public void userSignup(@RequestBody @Valid StudentSignupRequest request) {
         studentSignUpService.signUp(request);
     }
 
@@ -88,7 +88,7 @@ public class UserController {
     }
 
     @PatchMapping("/student")
-    public void updateStudentInfo(@RequestBody StudentUpdateRequest request){
+    public void updateStudentInfo(@RequestBody @Valid StudentUpdateRequest request){
         updateStudentInfoService.updateStudentInfo(request);
     }
 
@@ -99,12 +99,12 @@ public class UserController {
 
     //ADMIN
     @PostMapping("/signup/admin")
-    public void signupAdmin(@RequestBody AdminSignupRequest request) {
+    public void signupAdmin(@RequestBody @Valid AdminSignupRequest request) {
         signupAdminService.signupAdmin(request);
     }
 
     @PostMapping("/login/admin")
-    public TokenResponse loginAdmin(@RequestBody AdminLoginRequest request) {
+    public TokenResponse loginAdmin(@RequestBody @Valid AdminLoginRequest request) {
         return loginAdminService.loginAdmin(request);
     }
 
@@ -114,7 +114,7 @@ public class UserController {
     }
 
     @PatchMapping("/admin")
-    public void modifyAdminInfo(@RequestBody AdminModifyRequest request){
+    public void modifyAdminInfo(@RequestBody @Valid AdminModifyRequest request){
         modifyAdminInfoService.modifyAdminInfo(request);
     }
 

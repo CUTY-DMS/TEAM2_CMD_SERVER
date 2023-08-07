@@ -14,18 +14,25 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudentUpdateRequest {
 
+    @NotNull
     private String username;
 
+    @NotNull
     private Long grader;
 
+    @NotNull
     private Long schoolClass;
 
+    @NotNull
     private Long number;
 
+    @NotNull
     private MajorType majorType;
 
+    @NotNull
     private String club;
 
+    @NotNull
     private Date birth;
 
 }
