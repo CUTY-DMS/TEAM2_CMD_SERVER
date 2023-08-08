@@ -7,7 +7,6 @@ import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor

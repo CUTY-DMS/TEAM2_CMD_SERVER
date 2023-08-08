@@ -2,7 +2,6 @@ package com.example.cmdproject_team2.domain.user.facade;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
-import com.example.cmdproject_team2.global.exception.user.EmailMatchedException;
 import com.example.cmdproject_team2.global.exception.user.NotAuthenticatedException;
 import com.example.cmdproject_team2.global.exception.user.UserExistsException;
 import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
@@ -36,9 +35,4 @@ public class UserFacade {
         }
     }
 
-    public void checkUserEmail(String userEmail) {
-        if (userRepository.findByUserEmail(userEmail).isPresent()) {
-            throw EmailMatchedException.EXCEPTION;
-        }
-    }
 }
