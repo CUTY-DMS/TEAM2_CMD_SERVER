@@ -13,3 +13,4 @@ public class EmailMatchedException extends BusinessException {
         super(ErrorCode.EMAIL_MATCHED);
     }
 }
+

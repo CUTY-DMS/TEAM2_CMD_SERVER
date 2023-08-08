@@ -114,7 +114,6 @@ public class JwtTokenProvider {
 
     // HTTP 요청 헤더에서 토큰을 가져오는 메서드
     public String resolveToken(HttpServletRequest request) {
-
         String bearerToken = request.getHeader(jwtProperties.getHeader());
 
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(jwtProperties.getPrefix())
@@ -123,4 +122,5 @@ public class JwtTokenProvider {
         }
         return null;
     }
+
 }

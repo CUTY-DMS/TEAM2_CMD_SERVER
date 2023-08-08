@@ -1,8 +1,6 @@
 package com.example.cmdproject_team2.global.security.auth;
 
 import com.example.cmdproject_team2.domain.user.domain.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,4 +41,5 @@ public record CustomUserDetails(User user) implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

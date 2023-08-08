@@ -10,4 +10,5 @@ public class PasswordMismatchException extends BusinessException {
     public PasswordMismatchException() {
         super(ErrorCode.PASSWORD_MISMATCH);
     }
+
 }

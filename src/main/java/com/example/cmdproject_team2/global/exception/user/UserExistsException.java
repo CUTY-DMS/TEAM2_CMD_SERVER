@@ -10,4 +10,5 @@ public class UserExistsException extends BusinessException {
     private UserExistsException() {
         super(ErrorCode.USER_EXISTS);
     }
+
 }

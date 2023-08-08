@@ -39,4 +39,5 @@ public class GlobalExceptionFilter extends OncePerRequestFilter {
         response.setCharacterEncoding("UTF-8");
         objectMapper.writeValue(response.getWriter(), errorResponse);
     }
+
 }

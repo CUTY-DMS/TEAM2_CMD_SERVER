@@ -26,4 +26,5 @@ public class EmailConfig {
 
         return mailSender;
     }
+
 }

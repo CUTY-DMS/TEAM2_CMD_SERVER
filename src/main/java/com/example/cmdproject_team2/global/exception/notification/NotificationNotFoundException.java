@@ -10,4 +10,5 @@ public class NotificationNotFoundException extends BusinessException {
     public NotificationNotFoundException() {
         super(ErrorCode.NOTIFICATION_NOT_FOUND);
     }
+
 }

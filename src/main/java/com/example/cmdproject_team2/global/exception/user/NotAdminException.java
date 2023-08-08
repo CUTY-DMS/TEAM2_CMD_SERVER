@@ -10,4 +10,5 @@ public class NotAdminException extends BusinessException {
     public NotAdminException() {
         super(ErrorCode.NOT_ADMIN);
     }
+
 }
