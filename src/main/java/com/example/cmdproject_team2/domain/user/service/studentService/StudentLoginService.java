@@ -3,7 +3,6 @@ package com.example.cmdproject_team2.domain.user.service.studentService;
 import com.example.cmdproject_team2.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.cmdproject_team2.domain.user.domain.User;
 import com.example.cmdproject_team2.domain.user.domain.UserRepository;
-import com.example.cmdproject_team2.domain.user.facade.UserFacade;
 import com.example.cmdproject_team2.domain.user.presentation.dto.request.StudentLoginRequest;
 import com.example.cmdproject_team2.global.exception.user.PasswordMismatchException;
 import com.example.cmdproject_team2.global.exception.user.UserNotFoundException;
