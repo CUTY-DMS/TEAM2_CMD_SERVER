@@ -20,9 +20,4 @@ public class RefreshToken {
 
     @TimeToLive
     private Long timeToLive;
-
-    public void updateToken(Long timeToLive) {
-        this.timeToLive = timeToLive;
-    }
-
 }
