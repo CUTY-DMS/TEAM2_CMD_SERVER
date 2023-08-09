@@ -9,7 +9,7 @@ import com.example.cmdproject_team2.domain.user.presentation.dto.response.UserId
 import com.example.cmdproject_team2.domain.user.service.adminService.GetAdminDetailsService;
 import com.example.cmdproject_team2.domain.user.service.adminService.LoginAdminService;
 import com.example.cmdproject_team2.domain.user.service.adminService.ModifyAdminInfoService;
-import com.example.cmdproject_team2.domain.user.service.adminService.SignupAdminService;
+import com.example.cmdproject_team2.domain.user.service.adminService.SignUpAdminService;
 import com.example.cmdproject_team2.domain.user.service.commonService.*;
 import com.example.cmdproject_team2.domain.user.service.studentService.GetMyDetailsService;
 import com.example.cmdproject_team2.domain.user.service.studentService.StudentLoginService;
@@ -39,7 +39,7 @@ public class UserController {
     private final GetMyDetailsService getMyDetailsService;
 
     //ADMIN
-    private final SignupAdminService signupAdminService;
+    private final SignUpAdminService signupAdminService;
     private final LoginAdminService loginAdminService;
     private final GetAdminDetailsService getAdminDetailsService;
     private final ModifyAdminInfoService modifyAdminInfoService;

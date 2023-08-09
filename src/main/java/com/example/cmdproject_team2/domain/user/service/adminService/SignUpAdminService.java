@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class SignupAdminService {
+public class SignUpAdminService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
