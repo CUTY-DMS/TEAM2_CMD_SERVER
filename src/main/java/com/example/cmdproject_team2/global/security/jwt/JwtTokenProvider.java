@@ -88,7 +88,6 @@ public class JwtTokenProvider {
 
         return createToken(userId);
 
-
     }
 
     // 토큰에 담겨있는 userId로 SpringSecurity Authentication 정보를 반환하는 메서드

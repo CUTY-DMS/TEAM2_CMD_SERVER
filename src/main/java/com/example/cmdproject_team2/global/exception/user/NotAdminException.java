@@ -5,7 +5,7 @@ import com.example.cmdproject_team2.global.error.exception.ErrorCode;
 
 public class NotAdminException extends BusinessException {
 
-    public static final BusinessException EXCEPTION = new  NotAdminException();
+    public static final BusinessException EXCEPTION = new NotAdminException();
 
     public NotAdminException() {
         super(ErrorCode.NOT_ADMIN);
